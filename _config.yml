@@ -27,8 +27,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Ruby+Rails, and upcoming skills are AWS, Docker, K8s, and Linux sysadmin.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+github_username:  cgardn
 
 # Build settings
 theme: minima
