@@ -1,4 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-02T16:42:20-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Gardner | Web Developer</title><subtitle>I'm Chris Gardner, a former biomedical engineer, then photographer, now web developer. Ask me anything!</subtitle><entry><title type="html">First Post</title><link href="http://localhost:4000/2020/03/15/first-post.html" rel="alternate" type="text/html" title="First Post" /><published>2020-03-15T00:00:00-04:00</published><updated>2020-03-15T00:00:00-04:00</updated><id>http://localhost:4000/2020/03/15/first-post</id><content type="html" xml:base="http://localhost:4000/2020/03/15/first-post.html">&lt;p&gt;Well, it finally happened - I got a website! It may be a github.io site, but it’s better than the big zip I had before. Most of the blog posts for a while are going to be about the only Big Project I have right now, &lt;a href=&quot;https://hyperchef.herokuapp.com&quot;&gt;Hyperchef&lt;/a&gt;. It’s a recipe site, but you’ll be hearing a lot more about it in the next several posts, so I hope you like rambling thoughts on Rails app design!&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-02T17:25:09-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Gardner | Web Developer</title><subtitle>I'm Chris Gardner, a former biomedical engineer, then photographer, now web developer. Ask me anything!</subtitle><entry><title type="html">And Now An Actual Update</title><link href="http://localhost:4000/2020/03/16/and-now-an-actual-update.html" rel="alternate" type="text/html" title="And Now An Actual Update" /><published>2020-03-16T01:00:00-04:00</published><updated>2020-03-16T01:00:00-04:00</updated><id>http://localhost:4000/2020/03/16/and-now-an-actual-update</id><content type="html" xml:base="http://localhost:4000/2020/03/16/and-now-an-actual-update.html">&lt;p&gt;Now that the intro stuff is out of the way, here’s what I did today:&lt;/p&gt;
+
+&lt;p&gt;Since Bootstrap is “mobile-first” I focused mainly on mobile styling, fiddling 
+with buttons and stuff. I tried putting profile/login/signup links in a 
+hamburger menu that only shows on mobile, but the default collapse animation
+feels clunky, and I don’t like how it pushes the content down to make room for
+the expanded menu. I could probably tinker with the animation, maybe remove it,
+but that seems like a lot of work for what amounts to 4 buttons shown 2 at a
+time at most (Profile/Logout and Login/Signup). I have a lot of ground to cover
+before I can really start showing this off as a portfolio project, so I’m 
+trying to avoid rabbit holes.&lt;/p&gt;
+
+&lt;p&gt;I’ve been taking design cues from the amazon mobile site for interacting with a
+searchable database of items (well, recipes, but functionally similar just 
+without cart+checkout). They use a hamburger/flip-out type menu, but I don’t
+imagine I’d ever have as extensive a side-menu as Amazon, and I have some 
+pretty strong opinions about UI and hiding things from the user (i.e. don’t do
+it unless you really have to), so I think it’s best to just remove the 
+hamburger and try to keep the buttons small enough to fit on the header. I also
+have an image that brings you back to the home page, and I’d like to add one
+more button for “Back to Search,” so 1 image and 3 buttons isn’t enough to 
+justify a hamburger in my opinion.&lt;/p&gt;
+
+&lt;p&gt;Finally, I am aware that my UI powers are held back by not using React or some
+other modern frontend framework, but I’m still wrapping my head around the 
+Rails backend stuff, so I’m keeping it vanilla Rails server-side-rendering for
+now. I can always build a React frontend later (and I intend to).&lt;/p&gt;</content><author><name>chris</name></author><summary type="html">Now that the intro stuff is out of the way, here’s what I did today:</summary></entry><entry><title type="html">Begin Hyperchef Log Alpha</title><link href="http://localhost:4000/2020/03/16/begin-hyperchef-log-alpha.html" rel="alternate" type="text/html" title="Begin Hyperchef Log Alpha" /><published>2020-03-16T00:00:00-04:00</published><updated>2020-03-16T00:00:00-04:00</updated><id>http://localhost:4000/2020/03/16/begin-hyperchef-log-alpha</id><content type="html" xml:base="http://localhost:4000/2020/03/16/begin-hyperchef-log-alpha.html">&lt;p&gt;Well, I guess it’s time I start blogging about this. I’ve been working on
+Hyperchef (working title) for about a month now, in place of The Odin Project’s
+Rails final project. They wanted me to replicate Facebook, mainly to get
+experience with users and ActiveRecord associations. I wanted something
+different though, something more useful to me than a fake social media site, so
+I’m building a recipe site instead.&lt;/p&gt;
+
+&lt;p&gt;Most advice on finding ideas is a some variant of “solve a problem you have
+yourself,” and something I’ve encountered recently while trying to improve my
+cooking skills is that all recipe sites are universally &lt;strong&gt;terrible&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;All I wanted was a recipe for Coq Au Vin to impress my wife, but after the 
+fifth site in a row made me scroll through ten paragraphs on the author’s 
+personal history of cooking to get to the actual instructions, I decided the
+internet &lt;em&gt;does&lt;/em&gt; in fact need one more recipe site. One that cuts out all the 
+fluff, and maintains the shortest possible distance between “what do I want to
+eat” and “here’s how to cook it.” No prose, no extended history of cheese
+sauce, just meals with instructions. I also wanted to target people like me,
+people who can turn on the oven and fry an egg, but don’t really know all the
+ins and outs of cooking techniques, or how long a recipe &lt;em&gt;actually&lt;/em&gt; takes vs. 
+how long the author thinks it takes.&lt;/p&gt;
+
+&lt;p&gt;Thus: &lt;a href=&quot;https://hyperchef.herokuapp.com&quot;&gt;Hyperchef&lt;/a&gt;. I’ve probably already spent
+more time on this than I would have on the final project, mainly due to the 
+more complicated data models I’ve put together to support features that won’t
+get built for some time. Instead of each recipe having a table of ingredients
+with a little sprinkling of JS to change number of servings or from imperial to
+metric units, everything lives in its own table in the database exactly once - 
+even ingredients. Recipes are basically just a set of text steps and a bunch of
+references to ingredients and what cookware is involved. Quantities of 
+ingredients are saved on the join model between recipes and ingredients. I’m 
+not sure if it’s actually more “efficient” than just writing a recipe on a page
+and doing everything with JS, but I’m pretty proud of myself for putting it all
+together. Once I add users and saving favorite recipes I’ll have covered 
+everything the Odin Project wanted me to get out of the final project, but I’ll
+probably keep going a bit further. I want to be able to take those favorite
+recipes, add them to a weekly meal planner (or at least to a titled list), and
+press a button to get a tabulated grocery list that sums all the ingredients
+from all the recipes you picked for easy shopping. That’s the tool I want that
+doesn’t exist, so once I can do all that I think I’ll be satisfied.&lt;/p&gt;</content><author><name>chris</name></author><summary type="html">Well, I guess it’s time I start blogging about this. I’ve been working on Hyperchef (working title) for about a month now, in place of The Odin Project’s Rails final project. They wanted me to replicate Facebook, mainly to get experience with users and ActiveRecord associations. I wanted something different though, something more useful to me than a fake social media site, so I’m building a recipe site instead.</summary></entry><entry><title type="html">First Post</title><link href="http://localhost:4000/2020/03/15/first-post.html" rel="alternate" type="text/html" title="First Post" /><published>2020-03-15T00:00:00-04:00</published><updated>2020-03-15T00:00:00-04:00</updated><id>http://localhost:4000/2020/03/15/first-post</id><content type="html" xml:base="http://localhost:4000/2020/03/15/first-post.html">&lt;p&gt;Well, it finally happened - I got a website! It may be a github.io site, but it’s better than the big zip I had before. Most of the blog posts for a while are going to be about the only Big Project I have right now, &lt;a href=&quot;https://hyperchef.herokuapp.com&quot;&gt;Hyperchef&lt;/a&gt;. It’s a recipe site, but you’ll be hearing a lot more about it in the next several posts, so I hope you like rambling thoughts on Rails app design!&lt;/p&gt;
 
 &lt;p&gt;That’s what this blog will probably end up being: unsorted thoughts on current projects, frustration at problems I’m stuck on, jubiliation when I’ve solved them. Consider this less of a “10 quick tips for better coding” blog and more of a “Holy wow I can’t believe I didn’t think of that…well it might’ve taken two days but at least it’s fixed now” blog.&lt;/p&gt;
 
