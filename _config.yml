@@ -22,9 +22,7 @@ title: Chris Gardner | Web Developer
 email: christopher.gardn@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   I'm Chris Gardner, a former biomedical engineer, then photographer,
-  now web developer. My interests are in backend, devops, and analytics,
-  building things, and someday building in VR. My current skillset is
-  Ruby+Rails, and upcoming skills are AWS, Docker, K8s, and Linux sysadmin.
+  now web developer. Ask me anything!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  cgardn
