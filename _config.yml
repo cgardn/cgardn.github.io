@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Chris Gardner | Web Developer
+title: Chris Gardner | WebDev
 email: christopher.gardn@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   I'm Chris Gardner, a former biomedical engineer, then photographer,
