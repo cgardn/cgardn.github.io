@@ -24,8 +24,8 @@ pretty strong opinions about UI and hiding things from the user (i.e. don't do
 it unless you really have to), so I think it's best to just remove the 
 hamburger and try to keep the buttons small enough to fit on the header. I also
 have an image that brings you back to the home page, and I'd like to add one
-more button for "Back to Search," so 1 image and 3 buttons isn't enough to 
-justify a hamburger in my opinion. 
+more button for "Back to Search," so I can't justify a hamburger when there's
+enough space to fit everything without one.
 
 Finally, I am aware that my UI powers are held back by not using React or some
 other modern frontend framework, but I'm still wrapping my head around the 
