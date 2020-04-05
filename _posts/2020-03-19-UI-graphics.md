@@ -1,4 +1,8 @@
---- layout: post author: chris date: 2020-03-19 00:00:00 -0400 ---
+---
+layout: post
+author: chris
+date: 2020-03-19 00:00:00 -0400
+---
 
 OK! After a lot of trial and error, now there's a (relatively) consistent
 look-and-feel to the UI. I'm going for a vaguely-SNES-retro-game theme, just
