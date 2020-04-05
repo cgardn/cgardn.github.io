@@ -6,38 +6,42 @@ date: 2020-03-18 00:00:00 -0400
 
 I decided to remove the hamburger menu from the mobile view. Like I said
 yesterday, I just don't like the collapse animation. Maybe it's because my
-laptop is underpowered (it's a $200 HP Steam laptop - I didn't have a lot of
+laptop is underpowered (it's a $200 HP Stream laptop - I didn't have a lot of
 money to spend), but it also pushed page content around to make room for the
 content, and I don't like that in a navbar. I'm sure there's ways to make it
 pop-over real nice with something marginally more advanced than vanilla
 Bootstrap, but I'm not sweating the stylistic details yet, so I settled on the
 simple solution: Plain Old Buttons.
 
-Next, I finally made the recipe search results into something more than just
+Next, I made the recipe search results into something more than just
 plain links. I'm going with Bootstrap's cards for now, because I'm trying to
 keep it simple until I can dive straight into React, and cards are the
-easiest/most complete thing that I can set to a fixed width and layout
+easiest/most complete thing that I can set to a fixed width and lay out
 responsively. For now the cards are 350px wide, but I noticed that fixed width
 elements create a huge amount of white space when the viewport is just under a
-multiple of card width (not big enough to fit an extra one horizontally). As
-long as everything stays centered I guess it'll be fine for now.
+multiple of card width (i.e. just barely not big enough to fit an extra one
+horizontally). As long as everything stays centered I guess it's fine for
+now.
 
 Also for the record, getting cards to align and center correctly was a real
-pain in the rear, fiddling with the padding and margins on the cards and the
-container divs. Part of it was my fault, because the layout I've been patching
-together was a noobish mess, but also partly because the Bootstrap spacing
-utilities measure in rems, so I had to figure out which elements needed padding
-and which needed auto-margin, which meant actually needing my brain. Ugh.
+pain in the rear, and took lots of fiddling with the padding and margins on the
+cards and the container divs. Part of it was my fault, because the layout I've
+been patching together was an amateurish mess, but also partly because the
+Bootstrap spacing utilities measure in rems, so I had to figure out which 
+elements needed padding and which needed auto-margin, which meant actually 
+needing my brain. Ugh.
 
-Other minor changes: the un/favorting action in the UserProfile controller
-redirects back instead of to the recipe show view, so you can favorite right
-from the search results (the card has a button, eventually it'll be a small
-heart or something). Still no AJAX, which is coming, but for now redirect-back
-is good enough since the browser remembers the filter selections. Had a weird
-problem with the favorite button in the recipes#show view - instead of putting
-the recipe ID in the buttons hidden form input, it put a random nonce. I
-fiddled with it but ultimately changed nothing, and it went away on its own.
-Weird.
+Other minor fixes: the un/favoriting action in the UserProfile controller
+redirects back instead of to the recipe show view, so favorites a recipe from
+the search results will keep you on the search results (the card has a button,
+eventually it'll be a small heart or something). Still no AJAX, which is 
+coming, but for now redirect-back is good enough since the browser remembers 
+the filter selections.
+
+Had a weird problem with the favorite button in the recipes#show view - instead
+of putting the recipe ID in the buttons hidden form input, it put a random
+nonce. I fiddled with it but ultimately changed nothing, and it went away on 
+its own. Weird.
 
 Finally, I added new columns on the recipe model: prep time, cook time, and a
 path for the recipe cover image, which is unused for now. Right now they're all
