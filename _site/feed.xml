@@ -1,4 +1,231 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-02T20:40:40-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Gardner | Web Developer</title><subtitle>I'm Chris Gardner, a former biomedical engineer, then photographer, now web developer. Ask me anything!</subtitle><entry><title type="html">And Now An Actual Update</title><link href="http://localhost:4000/2020/03/16/and-now-an-actual-update.html" rel="alternate" type="text/html" title="And Now An Actual Update" /><published>2020-03-16T01:00:00-04:00</published><updated>2020-03-16T01:00:00-04:00</updated><id>http://localhost:4000/2020/03/16/and-now-an-actual-update</id><content type="html" xml:base="http://localhost:4000/2020/03/16/and-now-an-actual-update.html">&lt;p&gt;Now that the intro stuff is out of the way, here’s what I did today:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-07T21:11:33-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Gardner | WebDev</title><subtitle>I'm Chris Gardner, a former biomedical engineer, then photographer, now web developer. Ask me anything!</subtitle><entry><title type="html">N+1</title><link href="http://localhost:4000/2020/03/31/N+1.html" rel="alternate" type="text/html" title="N+1" /><published>2020-03-31T00:00:00-04:00</published><updated>2020-03-31T00:00:00-04:00</updated><id>http://localhost:4000/2020/03/31/N+1</id><content type="html" xml:base="http://localhost:4000/2020/03/31/N+1.html">&lt;p&gt;One more step toward the finish line! Today I started with some styling stuff
+Cassi and Micah pointed out yesterday: the unit conversions on recipe#show are
+now radio buttons instead of a dropdown, and serving size is a dropdown instead
+of a number input. I also changed the main search bar and filter button around
+so you don’t have to go back up from the filter button to click search.
+Hopefully that makes usage a little clearer until I can add JS to make the
+filters update as you select them.&lt;/p&gt;
+
+&lt;p&gt;Now on to the main event: removing all the N+1’s. Well, N+1 doesn’t cover it,
+it was more like N+5. For example, right now the search button reloads the
+whole page (I know, I know…I’m getting there). The point is, filters selected
+for a query need to remain selected after the query returns results.
+To do that, I was calling RecipeType.all.each (RecipeType is the recipe tag
+model), and then on each tag I called that RecipeType’s recipe association,
+THEN iterated through ALL the recipes that had that tag, comparing each 
+recipe’s tags to see if one matched the user’s selected filter list. So I had
+30-ish tags multiplied by dozens of recipes, and multiple database hits for
+each. And all of this was happening right in the view!! Yeesh!&lt;/p&gt;
+
+&lt;p&gt;It was the first way I did it just to get it done, but now every search with at
+least one filter checked triggered a comparison of each tag on each recipe, and
+it was blowing up the server log with a billion database calls, which wasn’t
+just messy - it made finding errors in the log a real pain.&lt;/p&gt;
+
+&lt;p&gt;Replacing the RecipeType association nonsense with a single #joins call saved
+10-12 ms, which doesn’t seem like a lot, but if I ever got to multiple hundreds
+of recipes and a serious amount of users, it’d add up pretty fast. I didn’t
+measure the recipe tag time savings, but the same change on ingredient tags
+went from 15 database hits per search at 27ms, to one hit at ~5.5ms. Honestly, 
+I wasn’t expecting such a dramatic decrease!&lt;/p&gt;
+
+&lt;p&gt;Fixing the tag-related calls was straightforward, but I also had a lot of calls
+related to loading the recipe cards, and that took a little more thinking. Part
+of it was the visual progress bars. Each card has a colored bar that shows at a
+glance the recipe difficulty, the number of ingredients, and the time required
+to go from “I’m hungry” to “Wow, that’s good!” I have 10 different images of
+progress bars, showing levels from 1 to 10.&lt;/p&gt;
+
+&lt;p&gt;The problem was that selecting the right image meant generating a score between
+1 and 10, and in order to generate the scores I was making three database hits 
+for each recipe returned by the search query - two to get cook time and prep
+time (and linear transform the sum to the range 1-10), and one hit to count the
+ingredients. However, I realized the attributes of a recipe only change when
+the recipe is created or updated, so scores based on the attributes should only
+be changed then, too.&lt;/p&gt;
+
+&lt;p&gt;So now there’s two extra columns on the Recipe table, one for the time score
+and one for the ingredient score (the difficulty is already just a 1-to-10
+number I plug into the recipe form). Now for each query, I can just grab the
+collection of recipes that matches the query, and pull the relevant attributes
+for the entire collection in a single database operation.&lt;/p&gt;
+
+&lt;p&gt;Ok, so I know this last one is going to sound pretty basic to the experienced
+reader, but I’m still proud of it because I learned some new parts of Rails to
+do it. The final big N+1 I had was pulling the logged-in user’s favorites list.
+There’s a button on each recipe card that changes visual states depending on
+whether the user has favorited that recipe. The original implementation was
+just calling the UserProfile.favorites association for the logged-in user, then
+lazy-loading each recipe one database-call at a time in the view. I figured out
+how to use #eager_load and #where to pull all the user’s favorite recipes at
+once, which cut the total pageload time almost in half! The actual number is
+inflated by the dev environment baggage, but it’s still a big benefit. Progress!&lt;/p&gt;
+
+&lt;p&gt;All in all this was a very educational and immensely satisfying day. I know
+this is peanuts compared to Real World Problems, but I’m a fixit-guy at heart, 
+and seeing those pageload numbers and log entries shrink tickles something in
+my brain. And with all I have planned to build, who knows what I’ll get to
+fix a month from now!&lt;/p&gt;</content><author><name>chris</name></author><summary type="html">One more step toward the finish line! Today I started with some styling stuff Cassi and Micah pointed out yesterday: the unit conversions on recipe#show are now radio buttons instead of a dropdown, and serving size is a dropdown instead of a number input. I also changed the main search bar and filter button around so you don’t have to go back up from the filter button to click search. Hopefully that makes usage a little clearer until I can add JS to make the filters update as you select them.</summary></entry><entry><title type="html">Nearly There</title><link href="http://localhost:4000/2020/03/30/nearly-there.html" rel="alternate" type="text/html" title="Nearly There" /><published>2020-03-30T00:00:00-04:00</published><updated>2020-03-30T00:00:00-04:00</updated><id>http://localhost:4000/2020/03/30/nearly-there</id><content type="html" xml:base="http://localhost:4000/2020/03/30/nearly-there.html">&lt;p&gt;Been a while since the last post, but I’m finally almost ready to launch! Lots
+of fixing small things that keep falling through the cracks because I changed
+something ten miles away.&lt;/p&gt;
+
+&lt;p&gt;For example, I updated the way ingredient quantities are recorded; now each
+ingredient has a standard 1-person serving size baked in (heh) in two different
+ways: 1 “show” amount and unit that appears on the recipe, and one “list”
+amount and unit that will get used in the grocery list when I eventually get to
+that feature. This way you can pick five recipes that each call for “2 carrots”
+but the grocery list will tell you to get 3 lbs. of carrots instead of 10
+individuals.&lt;/p&gt;
+
+&lt;p&gt;This is a little less flexible than the old way (per-recipe ingredient
+quantities saved on the recipe-ingredient join table), as it assumes all recipes use
+roughly the same amount of a given ingredient per person, but it’s much faster
+for defining new recipes (I just check the box if the ingredient is required),
+and much less data to worry about maintaining - ingredient quantities are calculated
+from one central place rather than each living on their own table.&lt;/p&gt;
+
+&lt;p&gt;Farther down the road I’m going to re-add recipe-specific amounts with some
+kind of “fudge factor,” but most recipes actually do use the same amount of
+things give or take, and flavor experience comes down to which foods and
+flavorings you combine, at least for most simple meals, which is what I’m
+targeting for now. Baking is another matter,
+which is why that can was firmly kicked. I’ll also allow future users to save
+customized amounts of ingredients on their saved recipes as they experiment and
+find their particular taste, which will give people another reason to sign up.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Despite all this, progress feels slow even though I’m checking things off every
+day. I totally get why everyone says you have to focus on “just
+shipping it.” Yet, I’ve reached a minor milestone - I’m finally adding more
+things to the “post-release” to-do list than the “gotta do this right now”
+list. All I have left is adding some more actual content, a few minor
+style/color things, tidying up the routing file, and setting up emails for
+signup confirmations and password resets. After that I’m gonna announce to
+friends and family, and MAYBE re-do the card graphics without anti-aliasing, or
+at least with a proper font that has the pixelated look, since the 
+anti-aliasing on the fixed width graphics is fuzzy on larger screens.&lt;/p&gt;
+
+&lt;p&gt;After it’s live I’ll be diving into basic test coverage, and later some kind of
+log filtering so I can see errors at a glance. Or at least, I’ll get a little more
+familiar with Heroku’s addons and options.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;On a personal note, the coronavirus pandemic got me down a bit - it’s hard to
+focus and stay excited about getting a new job while everyone else is
+scrambling to keep theirs. Honestly, I’m a little worried about downsizing
+happening right when I start looking in a couple weeks. I think that’s just my
+paranoia talking though - no one is me but me, so I’ll just keep plugging
+away at my portfolio and focus on building skills instead of worrying about
+competition. There’s always more dev work, so I’m sure there’s a place out
+there for me somewhere!&lt;/p&gt;</content><author><name>chris</name></author><summary type="html">Been a while since the last post, but I’m finally almost ready to launch! Lots of fixing small things that keep falling through the cracks because I changed something ten miles away.</summary></entry><entry><title type="html">Ui Graphics</title><link href="http://localhost:4000/2020/03/19/UI-graphics.html" rel="alternate" type="text/html" title="Ui Graphics" /><published>2020-03-19T00:00:00-04:00</published><updated>2020-03-19T00:00:00-04:00</updated><id>http://localhost:4000/2020/03/19/UI-graphics</id><content type="html" xml:base="http://localhost:4000/2020/03/19/UI-graphics.html">&lt;p&gt;OK! After a lot of trial and error, now there’s a (relatively) consistent
+look-and-feel to the UI. I’m going for a vaguely-SNES-retro-game theme, just
+enough to appeal to the kind of people who spend a lot of time at home and want
+to learn to cook, but don’t feel like the typical Instagram/influencer cooking
+world appeals to their aesthetic, aka…ME.&lt;/p&gt;
+
+&lt;p&gt;I mentioned last time about settling on 350px wide Bootstrap cards, and I spent
+half the day yesterday fiddling with pixel art editors (mtpaint and
+GraphicsGale) to put together some images to serve as UI elements. I’m using
+modified free art from two amazing artists, &lt;a href=&quot;https://www.kenney.nl/&quot;&gt;KenneyNL&lt;/a&gt;
+and &lt;a href=&quot;https://henrysoftware.itch.io/pixel-food&quot;&gt;Henry Software&lt;/a&gt;. After an hour or
+two getting the link visited/hover styles right and fixing a couple missed
+pixels on some of the images, I think I’m finally ready to launch!! Well,
+soft-launch at least. I’m not going full announcement mode until after I have
+the site up on Heroku and full of at least 100 recipes. That’s going to take
+some time though, since typing everything in takes a while, plus I have to add
+all the tags and ingredients too. The admin pages for creating and editing
+recipes/ingredients/tags are totally unstyled, but no one will ever see them but
+me so I can put that off for now.&lt;/p&gt;
+
+&lt;p&gt;I also thought of adding the recipe tags to the card in the form of little
+badges or icons. Besides vegetarian, meatless, vegan, and gluten-free, I’ll also
+have paleo, hands-off (meaning most of the time is in the oven or something, or
+less than say…10 minutes prep time), and one-pot (everything in one pot,
+limited cleanup). Or maybe I’ll just make that one a “limited cleanup” badge?
+Either way, after tinkering with the buttons and spacing I decided the badges
+are best left to version 2 after launch, better test coverage, and the first big
+refactor.&lt;/p&gt;
+
+&lt;p&gt;On a related note, what is the “correct” way to add the first admin user to a
+website? I guess I just go into the Rails console and manually make myself an
+admin? I’ve already blacklisted the admin attribute out of the user controller,
+so I suppose as long as no one gains physical control of my laptop they can’t
+make themselves admin, but I’d have bigger problems by then anyway (like nuking
+the whole site). I’m pretty noobish with security stuff still, which is a big
+reason why I’m using Devise for auth and accounts - I rolled my own when I was
+going through the &lt;a href=&quot;https://www.learnenough.com/ruby-on-rails-4th-edition-tutorial/beginning&quot;&gt;Hartl
+tutorial&lt;/a&gt;,
+and from that experience I learned that I don’t want to reinvent the wheel
+unless I absolutely have to.&lt;/p&gt;
+
+&lt;p&gt;Other than that, we’re almost there! I’d also like to add a subtitle to the main
+page, something like “recipes without the fluff” but more punny, though I’m not
+sure if that’s too much visual clutter. I guess we’ll see. I realized recently
+I’ve been avoiding launch, partly because I’m going to have to spend the money
+on a real Heroku instance, and partly because once it’s live making changes
+won’t be so consequence-free as they are now. But I guess it’s just another
+learning opportunity!&lt;/p&gt;
+
+&lt;p&gt;After that’s it’s just one more day for a quick resume site somewhere, and then
+it’ll be time to start blasting it all over the internet and find out how many
+things I’ve done wrong! Can’t wait! :)&lt;/p&gt;
+
+&lt;h3 id=&quot;quick-update&quot;&gt;Quick update&lt;/h3&gt;
+&lt;p&gt;D’oh - I forgot to add a link to the recipe cards that
+actually lets you view the dang recipe! And I forgot to style the show
+page…oi. So take everything I just said I did and add another 3-5 hours :))))&lt;/p&gt;</content><author><name>chris</name></author><summary type="html">OK! After a lot of trial and error, now there’s a (relatively) consistent look-and-feel to the UI. I’m going for a vaguely-SNES-retro-game theme, just enough to appeal to the kind of people who spend a lot of time at home and want to learn to cook, but don’t feel like the typical Instagram/influencer cooking world appeals to their aesthetic, aka…ME.</summary></entry><entry><title type="html">Designing Recipe Cards</title><link href="http://localhost:4000/2020/03/18/designing-recipe-cards.html" rel="alternate" type="text/html" title="Designing Recipe Cards" /><published>2020-03-18T00:00:00-04:00</published><updated>2020-03-18T00:00:00-04:00</updated><id>http://localhost:4000/2020/03/18/designing-recipe-cards</id><content type="html" xml:base="http://localhost:4000/2020/03/18/designing-recipe-cards.html">&lt;p&gt;I decided to remove the hamburger menu from the mobile view. Like I said
+yesterday, I just don’t like the collapse animation. Maybe it’s because my
+laptop is underpowered (it’s a $200 HP Stream laptop - I didn’t have a lot of
+money to spend), but it also pushed page content around to make room for the
+content, and I don’t like that in a navbar. I’m sure there’s ways to make it
+pop-over real nice with something marginally more advanced than vanilla
+Bootstrap, but I’m not sweating the stylistic details yet, so I settled on the
+simple solution: Plain Old Buttons.&lt;/p&gt;
+
+&lt;p&gt;Next, I made the recipe search results into something more than just
+plain links. I’m going with Bootstrap’s cards for now, because I’m trying to
+keep it simple until I can dive straight into React, and cards are the
+easiest/most complete thing that I can set to a fixed width and lay out
+responsively. For now the cards are 350px wide, but I noticed that fixed width
+elements create a huge amount of white space when the viewport is just under a
+multiple of card width (i.e. just barely not big enough to fit an extra one
+horizontally). As long as everything stays centered I guess it’s fine for
+now.&lt;/p&gt;
+
+&lt;p&gt;Also for the record, getting cards to align and center correctly was a real
+pain in the rear, and took lots of fiddling with the padding and margins on the
+cards and the container divs. Part of it was my fault, because the layout I’ve
+been patching together was an amateurish mess, but also partly because the
+Bootstrap spacing utilities measure in rems, so I had to figure out which 
+elements needed padding and which needed auto-margin, which meant actually 
+needing my brain. Ugh.&lt;/p&gt;
+
+&lt;p&gt;Other minor fixes: the un/favoriting action in the UserProfile controller
+redirects back instead of to the recipe show view, so favorites a recipe from
+the search results will keep you on the search results (the card has a button,
+eventually it’ll be a small heart or something). Still no AJAX, which is 
+coming, but for now redirect-back is good enough since the browser remembers 
+the filter selections.&lt;/p&gt;
+
+&lt;p&gt;Had a weird problem with the favorite button in the recipes#show view - instead
+of putting the recipe ID in the buttons hidden form input, it put a random
+nonce. I fiddled with it but ultimately changed nothing, and it went away on 
+its own. Weird.&lt;/p&gt;
+
+&lt;p&gt;Finally, I added new columns on the recipe model: prep time, cook time, and a
+path for the recipe cover image, which is unused for now. Right now they’re all
+displayed as numbers on the recipe card, but I’ll probably replace it with a
+visual grid or something to show recipe stats at a glance - meat, vegan,
+overall hands-on time required, difficulty (measured by number of steps),
+number of ingredients required (which has an impact on difficulty), or if any
+rare or exotic ingredients are required. I can do most of this through
+ingredient tags and model functions, I just need a sensible way of designing
+the UI to show it. I still want to fit in a 350px wide card, but if I make the
+350px the short side of the golden ratio, I can extend the vertical length of
+the cards from 216px to about 566px. Although I like the keeping the width 
+longer than the height, as traditionally recipe cards are 3x5 index cards.&lt;/p&gt;</content><author><name>chris</name></author><summary type="html">I decided to remove the hamburger menu from the mobile view. Like I said yesterday, I just don’t like the collapse animation. Maybe it’s because my laptop is underpowered (it’s a $200 HP Stream laptop - I didn’t have a lot of money to spend), but it also pushed page content around to make room for the content, and I don’t like that in a navbar. I’m sure there’s ways to make it pop-over real nice with something marginally more advanced than vanilla Bootstrap, but I’m not sweating the stylistic details yet, so I settled on the simple solution: Plain Old Buttons.</summary></entry><entry><title type="html">And Now An Actual Update</title><link href="http://localhost:4000/2020/03/16/and-now-an-actual-update.html" rel="alternate" type="text/html" title="And Now An Actual Update" /><published>2020-03-16T01:00:00-04:00</published><updated>2020-03-16T01:00:00-04:00</updated><id>http://localhost:4000/2020/03/16/and-now-an-actual-update</id><content type="html" xml:base="http://localhost:4000/2020/03/16/and-now-an-actual-update.html">&lt;p&gt;Now that the intro stuff is out of the way, here’s what I did today:&lt;/p&gt;
 
 &lt;p&gt;Since Bootstrap is “mobile-first” I focused mainly on mobile styling, fiddling 
 with buttons and stuff. I tried putting profile/login/signup links in a 
