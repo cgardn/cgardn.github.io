@@ -1,5 +1,60 @@
+ 
+  (4-9-2020) After a lot of mental struggle, I finally figured out the JS
+  remote form/JS response stuff in Rails. Here are the highlights to write
+  up later:
+    - most documentation out of date or incomplete, including edgeguides,
+      rubyguides, hartl tutorial no help and now even the 4th edition is
+      behind paywall
+    - most SO questions are from ancient versions of Rails (<5) or make
+      extensive use of jQuery (ew)
+    - no one place explains everything, most blog posts just kind-of sort-of
+      tell you how to write out the respond_to block, I have a sneaking 
+      suspicion 80%+ of "How to do X in Rails version Y" blog posts are just
+      homework requirements for bootcamps, hastily prepared, missing key
+      information, and usually hosted on Medium (ew again)
+    - nobody explains the actual flow from view->controller->JS view in a 
+      way that a first-timer like me can understand
 
-  *Most recent post (4-6-2020) My test coverage has now gone from zero to some. Now tests cover
+  So here's the basic flow for future reference/anyone else:
+    HOW TO DO REMOTE FORMS AND LINKS IN RAILS v5
+    - make a form (remote: true is default now, if you don't specify remote or
+    local, it's remote)
+    - write the respond_to block
+      respond_to |f| do
+        f.html {}
+        f.js {}
+      end
+      -> this means that when an HTML query is received, the controller will 
+      do whatever is in the {} and then generate the view from *.html.erb
+      -> if a JS query is received, the controller will do whatever is in the
+      {} after f.js, and then generate the view from *** *.js.erb ***
+    - here's the key point: *.js.erb is just a regular JS script file. You 
+      don't have to recreate the entire view, you already did that because the
+      *.html.erb view is the initial page that gets loaded. So you can use the
+      *.js.erb to run arbitrary javascript methods to change the page however 
+      you want. Because you can also use ERB, you have access to the full boat
+      of instance variables and you can render partials, so you can update just
+      a piece of the page as you so desire.
+    - everything else about sending an AJAX request is handled behind the
+      scenes for you by the rails-ujs gem that is now built into Rails as of
+      v5.
+   
+   I was trying to use link_to to create a remote link with query params, in
+   order to tell the controller which units to change to and what servings to
+   set. Turns out my original method for sorting that all out was a pile of
+   hot garbage. In the end, I replaced the link helpers with just a couple
+   of divs, styled them like buttons, and attached JS Event listeners in the
+   app/assets/javascripts/*.js associated with that view. Rails-ujs gives you
+   a convenient wrapper for submitting forms from JS,
+   ```Rails.fire(form, 'submit')``` 
+   Where 'form' is the form element on the page (use query selectors).
+
+   Hopefully if you're noob like me, this will help you. I certainly didn't get
+   much help from all the other blog posts about this out there! If it needs 
+   more explanation or some key part is missing, drop me a line and I'll make
+   it more complete!
+
+  (4-6-2020) My test coverage has now gone from zero to some. Now tests cover
   every user-facing page for successful response, every resource-modifying
   action (create, update, destroy) for unauthorized access, and as many of the
   model functions as i could manage without associations; as I mentioned last
