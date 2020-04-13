@@ -6,27 +6,26 @@ haven't figured out how to get those working in the test environment yet.
 
 ### Things writing tests has exposed about my code 
   - Code in the wrong place
-    - Making an ingredient to test a function on the recipe model that mostly
-      deals with ingredients (unit conversion), not only obseleted by something
-      I changed a while ago, but now on totally the wrong model. It was
-      probably on the wrong model to begin with, but I couldn't see that when I
-      wrote it 
+    - A recipe model function that deals mostly with ingredients was not only
+      obseleted by something I changed a while ago, but is now on wrong model
+      entirely. It was probably on the wrong model to begin with, but I
+      couldn't see that when I wrote it.
   - Not enough done programatically 
     - Ingredient units are stored in a hash of arrays, and each element of the
       hash has a reasonably long name like "imperial\_show" or "metric\_list".
-      it was the easiest/most sensible way I could think of to do  unit
+      It was the easiest/most sensible way I could think of to do unit
       conversions quickly: bake them in by putting a single "standard serving"
       on each ingredient in both imperial and metric units, then just multiply
       by the servings the user chooses on the page. Later I'll add a fudge
       factor for recipes that are more than just protein+veg+starch.  However,
-      every place I want to build a new ingredient in tests for example, I have
+      every time I want to build a new ingredient for a test, I have
       to write out the whole hash with all the long names, because I never
       thought of making a function to build the hash in one place.
 
 In other news, the last couple TODOs for the first terrible version of
 Hyperchef are done. Those items were connecting ActionMailer to SendGrid for
-password reset mail, and styling the devise view links as buttons to match the
-rest of the site.
+password reset mail, and styling the devise views to (mostly) match the rest of
+the site.
 
 My overall feeling about Hyperchef in its present state is...medium rare. It's
 a fairly arbitrary "launch," and I'm definitely not done - I haven't even built
