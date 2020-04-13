@@ -1,3 +1,19 @@
+  (4-12-2020) Today I learned that because all js files can smushed 
+  together in one big file for each page, you can't have the same js function
+  name in two different places, even though they're different files. Rather
+  obvious in retrospect!
+
+  In other news, I broke linux today while trying to see if I could boot 
+  straight to terminal. I disabled the graphics manager in systemd with 
+  ```systemctl disable``` and then my comptuer wouldn't finish booting.
+  So I had to fire up the 'ol Puppy Linux recovery USB stick, and a medium
+  amount of googling later, I now know how to manually enable and disable
+  systemd services. Turns out all the services that can be turned on or off
+  live in /usr/lib/systemd/, and all you have to do is symlink whatever 
+  service you want from there into one of the folders in /etc/systemd/system.
+  I found the library for the window manager (sddm), and guessed at 
+  multi-user.targets.wants, and it turns out I was right because the next 
+  reboot everything fired up like normal.
  
   (4-9-2020) After a lot of mental struggle, I finally figured out the JS
   remote form/JS response stuff in Rails. Here are the highlights to write
