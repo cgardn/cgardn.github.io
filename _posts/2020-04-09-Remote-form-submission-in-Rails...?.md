@@ -31,7 +31,7 @@ set of sample data, it was time to get it done. Here's what I was up against:
       as of v5.1. ES6 and the modern Web API are so great, I want to only write
       things using modern tools when possible.
 
-  - ### Most blog posts are half-hearted attempts from bootcamp students
+  - ### Most blog posts are half a solution
     - I don't expect to find everything in one convenient place, but most of the
       blogs I found about JS in Rails just kind-of-sort-of tell you how to use
       respond_to to make a basic API response, with no details about how Rails
