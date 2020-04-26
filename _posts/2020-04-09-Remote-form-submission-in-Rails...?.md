@@ -3,7 +3,7 @@
 Hyperchef handles nearly all its buttons as forms. My first instinct was to 
 make them AJAX calls, as is the modern way, but I immediately discovered that
 documentation on using JS in Rails is...let's go with "incomplete." In the mad
-scramble to accomplish ~something~ anything, I decided to save time on digging
+scramble to accomplish ~~something~~ anything, I decided to save time on digging
 for answers by doing form submissions by plain 'ol HTML requests.
 
 It's been bugging me ever since that every button push triggers a full page
@@ -16,19 +16,21 @@ Now that all the basic pieces were finally complete, along with a (very) small
 set of sample data, it was time to get it done. Here's what I was up against:
 
   - ### Rails 5
-    - I know 6 came out a while ago, but I learned on
+    - I know Rails 6 came out a while ago, but I learned on
     Rails 5, and this is supposed to be Baby's First Real Project, so I stuck
     with what I knew.
     - Most of the Rails 5 documentation is out of date or incomplete. Even the
       official rubyguides and edgeguides don't really tell you what to do or
       where to put the various JS files. Also, the Hartl tutorial doesn't really
       go into this too much, and the old 4th edition is no longer free anyway.
+
   - ### Rails has long history
     - Since Rails has been around for 15 years, and its peak popularity is
       behind us, the majority of Stack Overflow questions are from outdated
       versions or make extensive use of jQuery (ew), which no longer ships with Rails
       as of v5.1. ES6 and the modern Web API are so great, I want to only write
       things using modern tools when possible.
+
   - ### Most blog posts are half-hearted attempts from bootcamp students
     - I don't expect to find everything in one convenient place, but most of the
       blogs I found about JS in Rails just kind-of-sort-of tell you how to use
@@ -39,6 +41,7 @@ set of sample data, it was time to get it done. Here's what I was up against:
       Rails at bootcamps over the last decade, I have a sneaking suspicion that
       most of them are some kind of homework assignment: hastily prepared,
       missing key information, and usually hosted on Medium (ew again).
+
   - ### Assumed expert knowledge
     - This is a more general problem I'm sure we all face when learning
       something new, but nearly every source of information that isn't written

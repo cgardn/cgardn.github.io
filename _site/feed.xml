@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-26T16:50:10-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Gardner | WebDev</title><subtitle>I'm Chris Gardner, a former biomedical engineer, then photographer, now web developer. Ask me anything!</subtitle><entry><title type="html">Remote Form Submission In Rails&amp;#8230;?</title><link href="http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/html" rel="alternate" type="text/html" title="Remote Form Submission In Rails...?" /><published>2020-04-09T00:00:00-04:00</published><updated>2020-04-09T00:00:00-04:00</updated><id>http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/Remote-form-submission-in-Rails...</id><content type="html" xml:base="http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/html">&lt;h2 id=&quot;preamble&quot;&gt;Preamble&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-26T16:59:09-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Gardner | WebDev</title><subtitle>I'm Chris Gardner, a former biomedical engineer, then photographer, now web developer. Ask me anything!</subtitle><entry><title type="html">Remote Form Submission In Rails&amp;#8230;?</title><link href="http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/html" rel="alternate" type="text/html" title="Remote Form Submission In Rails...?" /><published>2020-04-09T00:00:00-04:00</published><updated>2020-04-09T00:00:00-04:00</updated><id>http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/Remote-form-submission-in-Rails...</id><content type="html" xml:base="http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/html">&lt;h2 id=&quot;preamble&quot;&gt;Preamble&lt;/h2&gt;
 
 &lt;p&gt;Hyperchef handles nearly all its buttons as forms. My first instinct was to 
 make them AJAX calls, as is the modern way, but I immediately discovered that
 documentation on using JS in Rails is…let’s go with “incomplete.” In the mad
-scramble to accomplish ~something~ anything, I decided to save time on digging
+scramble to accomplish &lt;del&gt;something&lt;/del&gt; anything, I decided to save time on digging
 for answers by doing form submissions by plain ‘ol HTML requests.&lt;/p&gt;
 
 &lt;p&gt;It’s been bugging me ever since that every button push triggers a full page
@@ -19,7 +19,7 @@ set of sample data, it was time to get it done. Here’s what I was up against:&
   &lt;li&gt;
     &lt;h3 id=&quot;rails-5&quot;&gt;Rails 5&lt;/h3&gt;
     &lt;ul&gt;
-      &lt;li&gt;I know 6 came out a while ago, but I learned on
+      &lt;li&gt;I know Rails 6 came out a while ago, but I learned on
 Rails 5, and this is supposed to be Baby’s First Real Project, so I stuck
 with what I knew.&lt;/li&gt;
       &lt;li&gt;Most of the Rails 5 documentation is out of date or incomplete. Even the
