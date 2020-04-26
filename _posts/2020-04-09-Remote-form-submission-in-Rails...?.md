@@ -17,7 +17,7 @@ set of sample data, it was time to get it done. Here's what I was up against:
 
   - ### Rails 5
     - I know Rails 6 came out a while ago, but I learned on
-    Rails 5, and this is supposed to be Baby's First Real Project, so I stuck
+    Rails 5 and this is supposed to be Baby's First Real Project, so I stuck
     with what I knew.
     - Most of the Rails 5 documentation is out of date or incomplete. Even the
       official rubyguides and edgeguides don't really tell you what to do or
@@ -35,11 +35,11 @@ set of sample data, it was time to get it done. Here's what I was up against:
     - I don't expect to find everything in one convenient place, but most of the
       blogs I found about JS in Rails just kind-of-sort-of tell you how to use
       respond_to to make a basic API response, with no details about how Rails
-      views interact with Javascript, where *.js files in various places are run
-      and what functions are available in what place, or anything I needed to
+      views interact with Javascript, where *.js files are supposed to go 
+      and what JS functions are available in what place, or anything I needed to
       know to add JS flavor to my bland Rails soup. Given the popularity of
       Rails at bootcamps over the last decade, I have a sneaking suspicion that
-      most of them are some kind of homework assignment: hastily prepared,
+      most of these incomplete posts are some kind of homework assignment: hastily prepared,
       missing key information, and usually hosted on Medium (ew again).
 
   - ### Assumed expert knowledge
