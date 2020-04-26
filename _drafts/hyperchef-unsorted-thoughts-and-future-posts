@@ -1,3 +1,50 @@
+  (4-14-2020) The Case of the Wacky Form Inputs
+  trying to implement a save button as a partial I can sprinkle around the
+  various places users interact with recipes - cards on search#query, and on
+  the recipe#show view. It was working as a non-partial on recipe#show, when
+  I decided to make it a partial. That's when the mystery started (rewrite).
+  First, the button is actually a small form, with a hidden input :addFavID
+  that carries the ID of the recipe in question. The form submits remotely to
+  the user_profile controller, which looks up the currently logged-in user with
+  the devise helpers, and then either adds or removes the recipe from the 
+  user_profile.favorites association for the logged-in user, depending on the 
+  HTML verb that the form sent in (post or delete). Whichever action was called
+  then (supposedly) fires off its associated JS view, which in both cases finds
+  the save button's div container (always id'd with "savebutton"), and flips
+  the image to show the new state (saved or not saved).
+
+  The first thing I noticed was that the image wasn't changing on click. The 
+  server logs showed the save was actually getting processed, but then when 
+  rendering the view, it complained that the recipe reference it needed to 
+  set :addFavID was actually nil. Cue an indeterminate amount of time and a
+  small amount of hair-pulling later, and I learned that in order to pass
+  local variables into a partial, you need to specifically call
+  'render partial:' instead of just 'render' in the ERB. (use code block here)
+  You also have to write it like ```locals: { localvar: value }```. Color me
+  embarrassed, but it is what it is.
+
+  Correct syntax in hand, I leapt into action, correcting code at a blistering
+  pace, until at last I slumped back in my chair with a long sigh of relief. 
+  Surely I had conquered this bug! I restarted the development server just to
+  be sure, navigated back to search#query, clicked on the "save" button for
+  one of the recipes, and...nothing. "No matter," I thought, checking the logs.
+  "The logs say it processed correctly, so I'll just refresh the page, annnd..."
+  Success! After refreshing the page, the save button changed to the correct
+  state. Fixing the JS to do its thing on-click was a separate issue, so I 
+  clicked again to make sure the button worked going the other direction,
+  and again nothing happened, however now server logs did NOT show success.
+  Instead, the logs said I was trying to post the recipe to the favorites list,
+  even though the button already said it was saved! I checked the button element
+  in the inspector, and the _method input was set to a long random string, 
+  similar to the CSRF token, instead of "delete" like it was supposed to
+  (that's how Rails handles HTML verbs besides POST and GET in forms - a 
+  hidden input).
+
+  --also the other way, with the can't find recipe with id: "aldksjfiawjeir329"
+  -- investigation with pen and paper
+  -- probably reduce word count for brevity etc
+
+
   (4-12-2020) Today I learned that because all js files can smushed 
   together in one big file for each page, you can't have the same js function
   name in two different places, even though they're different files. Rather
