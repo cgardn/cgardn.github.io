@@ -1,4 +1,289 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-07T21:11:33-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Gardner | WebDev</title><subtitle>I'm Chris Gardner, a former biomedical engineer, then photographer, now web developer. Ask me anything!</subtitle><entry><title type="html">N+1</title><link href="http://localhost:4000/2020/03/31/N+1.html" rel="alternate" type="text/html" title="N+1" /><published>2020-03-31T00:00:00-04:00</published><updated>2020-03-31T00:00:00-04:00</updated><id>http://localhost:4000/2020/03/31/N+1</id><content type="html" xml:base="http://localhost:4000/2020/03/31/N+1.html">&lt;p&gt;One more step toward the finish line! Today I started with some styling stuff
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-26T16:50:10-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Gardner | WebDev</title><subtitle>I'm Chris Gardner, a former biomedical engineer, then photographer, now web developer. Ask me anything!</subtitle><entry><title type="html">Remote Form Submission In Rails&amp;#8230;?</title><link href="http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/html" rel="alternate" type="text/html" title="Remote Form Submission In Rails...?" /><published>2020-04-09T00:00:00-04:00</published><updated>2020-04-09T00:00:00-04:00</updated><id>http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/Remote-form-submission-in-Rails...</id><content type="html" xml:base="http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/html">&lt;h2 id=&quot;preamble&quot;&gt;Preamble&lt;/h2&gt;
+
+&lt;p&gt;Hyperchef handles nearly all its buttons as forms. My first instinct was to 
+make them AJAX calls, as is the modern way, but I immediately discovered that
+documentation on using JS in Rails is…let’s go with “incomplete.” In the mad
+scramble to accomplish ~something~ anything, I decided to save time on digging
+for answers by doing form submissions by plain ‘ol HTML requests.&lt;/p&gt;
+
+&lt;p&gt;It’s been bugging me ever since that every button push triggers a full page
+refresh, but it was good enough to keep going while I pushed through building
+and learning at the same time.&lt;/p&gt;
+
+&lt;h2 id=&quot;that-brings-us-to-today&quot;&gt;That brings us to today&lt;/h2&gt;
+
+&lt;p&gt;Now that all the basic pieces were finally complete, along with a (very) small
+set of sample data, it was time to get it done. Here’s what I was up against:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;rails-5&quot;&gt;Rails 5&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;I know 6 came out a while ago, but I learned on
+Rails 5, and this is supposed to be Baby’s First Real Project, so I stuck
+with what I knew.&lt;/li&gt;
+      &lt;li&gt;Most of the Rails 5 documentation is out of date or incomplete. Even the
+official rubyguides and edgeguides don’t really tell you what to do or
+where to put the various JS files. Also, the Hartl tutorial doesn’t really
+go into this too much, and the old 4th edition is no longer free anyway.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;rails-has-long-history&quot;&gt;Rails has long history&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Since Rails has been around for 15 years, and its peak popularity is
+behind us, the majority of Stack Overflow questions are from outdated
+versions or make extensive use of jQuery (ew), which no longer ships with Rails
+as of v5.1. ES6 and the modern Web API are so great, I want to only write
+things using modern tools when possible.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;most-blog-posts-are-half-hearted-attempts-from-bootcamp-students&quot;&gt;Most blog posts are half-hearted attempts from bootcamp students&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;I don’t expect to find everything in one convenient place, but most of the
+blogs I found about JS in Rails just kind-of-sort-of tell you how to use
+respond_to to make a basic API response, with no details about how Rails
+views interact with Javascript, where *.js files in various places are run
+and what functions are available in what place, or anything I needed to
+know to add JS flavor to my bland Rails soup. Given the popularity of
+Rails at bootcamps over the last decade, I have a sneaking suspicion that
+most of them are some kind of homework assignment: hastily prepared,
+missing key information, and usually hosted on Medium (ew again).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;assumed-expert-knowledge&quot;&gt;Assumed expert knowledge&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;This is a more general problem I’m sure we all face when learning
+something new, but nearly every source of information that isn’t written
+by an amateur like me assumes expert-level knowledge in web development.
+I had to piece the answers together from multiple different sources who
+each left out key basic information on how the Rails system fits together.
+In this case, nobody explained the actual flow from
+view-&amp;gt;controller-&amp;gt;Javascript view in a way that a first-timer like me can
+understand.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Facing these beasts, I girded my loins, holstered coffee and snacks, and
+forged into the unkempt wilds of Rails information and emerged at last
+victorious. So here for you, dear reader, are the spoils of my victory.&lt;/p&gt;
+
+&lt;p&gt;(and before you say it, I know most of this is pretty basic, and Rails 6 changed
+a lot of this. I just want to document my success)&lt;/p&gt;
+
+&lt;h1 id=&quot;how-to-do-remote-forms-links-and-other-javascript-things-in-rails-5&quot;&gt;HOW TO DO REMOTE FORMS, LINKS, AND OTHER JAVASCRIPT THINGS IN RAILS 5&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;First you make a form. I use &lt;code class=&quot;highlighter-rouge&quot;&gt;form_with&lt;/code&gt;, but you can do it however you
+like.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;In Rails 5, all forms made with a form helper are remote &lt;strong&gt;by default.&lt;/strong&gt;
+This means that every form you make will submit the params “as JS,” which
+you will see on the server logs when you click the button. The page won’t
+refresh, and you won’t see any errors if something isn’t right.&lt;/li&gt;
+      &lt;li&gt;Make sure the form submits to the controller action you’re trying to call.
+This can be anything, really, so long as you follow the &lt;code class=&quot;highlighter-rouge&quot;&gt;respond_to&lt;/code&gt;
+step below and create the *.js.erb file for whatever action you’re using.&lt;/li&gt;
+      &lt;li&gt;You can also use &lt;code class=&quot;highlighter-rouge&quot;&gt;button_to&lt;/code&gt; if all you want is something to click on,
+with no input (more on that at the end).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Write the respond_to block&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;This part is actually explained in a lot of places. In order to have the
+controller respond to anything other than an HTML request, you have to
+include a block like this:&lt;/p&gt;
+
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;respond_to |format| do
+  format.html {}
+  format.js {}
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+
+        &lt;p&gt;Let’s say you put this at the bottom of #index action of a controller.
+What this means, is that
+when an HTML query is received, the controller will do whatever you put in
+the {} after &lt;code class=&quot;highlighter-rouge&quot;&gt;format.html&lt;/code&gt;, and then generate the view from index.html.erb
+as normal.  Similarly, when a JS request is received, the controller will do
+everything above the &lt;code class=&quot;highlighter-rouge&quot;&gt;respond_to block&lt;/code&gt;, then do everything inside the
+{} after &lt;code class=&quot;highlighter-rouge&quot;&gt;format.js&lt;/code&gt;, then generate a view from &lt;strong&gt;index.js.erb&lt;/strong&gt;.&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create a *.js.erb file, and stick all your Javascript in there&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Here’s the key point:&lt;/strong&gt; index.js.erb isn’t actually a different index
+view. It’s just a regular javascript file, and you can use whatever JS you
+want to change the DOM however you want. However, because you can also use
+ERB, you have access to the full boat of controller instance variables &lt;em&gt;and&lt;/em&gt;
+you can render partials, so you can select whatever part of the DOM you want
+to update with data from the controller as you so desire.&lt;/p&gt;
+
+        &lt;p&gt;There’s actually quite a bit more going on to make these AJAX requests work,
+but Rails handles it all behind the scenes for you with the &lt;code class=&quot;highlighter-rouge&quot;&gt;rails-ujs&lt;/code&gt;
+gem, which is now a built-in part of Rails as of v5.&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;And that’s basically it! It’s confusing the first time you go through it, but
+once you see where the different *.js.erb files go and how to call them, it
+becomes pretty easy. For the experienced readers, I know this is all, like,
+super basic, but at the time I was looking there wasn’t a single place where all
+these pieces were presented together.&lt;/p&gt;
+
+&lt;p&gt;Here’s that bit about &lt;code class=&quot;highlighter-rouge&quot;&gt;button_to&lt;/code&gt; I mentioned earlier. The reason I wanted
+remote forms, was for switching recipe measurement units from imperial to metric
+without reloading the page. This meant making a call to the controller with
+whatever units I was asking for in the params.&lt;/p&gt;
+
+&lt;p&gt;My first attempt was to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;link_to&lt;/code&gt; and stuffing query params into the
+GET request. I thought it would be Better™ to put the user’s choice in the
+URL bar as GET params, so they could bookmark their preferred version.&lt;/p&gt;
+
+&lt;p&gt;Turns out my original method for sorting that out was a pile of hot garbage. I
+had to construct some truly outrageous param whitelist setups to get it to work
+at all, and then one tiny change would goof it all up again.&lt;/p&gt;
+
+&lt;p&gt;In the end, I replaced the link helpers with just a couple of divs styled to
+look like buttons, and attached JS Event listeners in the
+app/assets/javascripts/*.js file for that view. Another nice thing about
+&lt;code class=&quot;highlighter-rouge&quot;&gt;rails-ujs&lt;/code&gt; is a convenient wrapper for submitting forms programatically
+with JS: &lt;code class=&quot;highlighter-rouge&quot;&gt;Rails.fire(form, 'submit')&lt;/code&gt;, where ‘form’ is a reference to the
+form element on the page you pick out with a query selector. That’s the other
+thing: That app/assets/javascripts folder is where you can make view-specific JS
+files that will run when the page is first loaded - this is where you attach
+Event listeners.&lt;/p&gt;
+
+&lt;p&gt;Oh, one more thing - speaking of Event listeners, if you’re using Turbolinks,
+you can’t attach to the pageload event, because Turbolinks’ whole thing is
+skipping a full reload to save time. Instead, you have to attach to the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;turbolinks:load&lt;/code&gt; event, like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  document.addEventListener(&quot;turbolinks:load&quot;, function() {
+    do_something_neat();
+  })
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Hopefully if you’re a noob like I was, this will help you. I also certainly hope
+that you will email me if I’ve made a mistake! If you’re reading this and you 
+think it needs more explanation or I’m missing some key part, please drop me a
+line and I’ll make it more complete!&lt;/p&gt;</content><author><name></name></author><summary type="html">Preamble</summary></entry><entry><title type="html">Finished Tests For Now, I Think</title><link href="http://localhost:4000/2020/04/06/finished-tests-for-now,-I-think.html" rel="alternate" type="text/html" title="Finished Tests For Now, I Think" /><published>2020-04-06T00:00:00-04:00</published><updated>2020-04-06T00:00:00-04:00</updated><id>http://localhost:4000/2020/04/06/finished-tests-for-now,-I-think</id><content type="html" xml:base="http://localhost:4000/2020/04/06/finished-tests-for-now,-I-think.html">&lt;p&gt;My test coverage has officialy gone from zero to some. Now tests cover every
+user-facing page for a successful response, every resource-modifying action
+(create, update, destroy) for unauthorized access, and as many of the model
+functions as I could manage without associations; as I mentioned last time I
+haven’t figured out how to get those working in the test environment yet.&lt;/p&gt;
+
+&lt;h3 id=&quot;things-writing-tests-has-exposed-about-my-code&quot;&gt;Things writing tests has exposed about my code&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Code in the wrong place
+    &lt;ul&gt;
+      &lt;li&gt;A recipe model function that deals mostly with ingredients was not only
+obseleted by something I changed a while ago, but is now on wrong model
+entirely. It was probably on the wrong model to begin with, but I
+couldn’t see that when I wrote it.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Not enough done programatically
+    &lt;ul&gt;
+      &lt;li&gt;Ingredient units are stored in a hash of arrays, and each element of the
+hash has a reasonably long name like “imperial_show” or “metric_list”.
+It was the easiest/most sensible way I could think of to do unit
+conversions quickly: bake them in by putting a single “standard serving”
+on each ingredient in both imperial and metric units, then just multiply
+by the servings the user chooses on the page. Later I’ll add a fudge
+factor for recipes that are more than just protein+veg+starch.  However,
+every time I want to build a new ingredient for a test, I have
+to write out the whole hash with all the long names, because I never
+thought of making a function to build the hash in one place.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In other news, the last couple TODOs for the first terrible version of
+Hyperchef are done. Those items were connecting ActionMailer to SendGrid for
+password reset mail, and styling the devise views to (mostly) match the rest of
+the site.&lt;/p&gt;
+
+&lt;p&gt;My overall feeling about Hyperchef in its present state is…medium rare. It’s
+a fairly arbitrary “launch,” and I’m definitely not done - I haven’t even built
+all the core features like grocery lists and the meal planner - but part of me
+can’t believe I’m actually about to finish a working version of something only
+a month later. Wow, has it really been a month? That’s when github says my
+first commit was, but time sure flew by.&lt;/p&gt;
+
+&lt;p&gt;After adding a few more of my favorite recipes to start out, I’m going to dive
+into a huge first refactor, and honestly I’m really excited about it. I like
+fixing and cleaning things way more than building things, so I can’t wait to
+pull out all the cruft that’s accumulated while I figured out what the heck I
+was doing as I built. There’s quite a bit of old code that is now obseleted or
+not even in use - I tend to leave things in place when I try new ideas. Not
+sure if that’s bad practice, but at the (small) scale I’m working I think
+having to come back later and sweep the closets is worth the time savings and
+speed, since I’m trying something new about a hundred times each day.&lt;/p&gt;
+
+&lt;p&gt;I’m also really lukewarm on the visual design now. Not the overall theme, I
+like that part, but the way I’ve laid out the cards and especially all the
+buttons just feels unprofessional and unfinished. I’m still getting the hang of
+this front-end design business, but learning so much so fast has the
+side-effect of constantly moving the goalpost of acceptable design. What looked
+fine to me four weeks ago looked amateurish two weeks ago, and two-weeks-ago’s
+fixes look garbage today. Constant improvement! But also constantly feeling
+like it’s not good enough. It’s fine, I like how much my eye is changing, now I
+just hope my skills can keep up.&lt;/p&gt;</content><author><name></name></author><summary type="html">My test coverage has officialy gone from zero to some. Now tests cover every user-facing page for a successful response, every resource-modifying action (create, update, destroy) for unauthorized access, and as many of the model functions as I could manage without associations; as I mentioned last time I haven’t figured out how to get those working in the test environment yet.</summary></entry><entry><title type="html">Test Coverage At Last</title><link href="http://localhost:4000/2020/04/04/Test-Coverage-at-last.html" rel="alternate" type="text/html" title="Test Coverage At Last" /><published>2020-04-04T00:00:00-04:00</published><updated>2020-04-04T00:00:00-04:00</updated><id>http://localhost:4000/2020/04/04/Test-Coverage-at-last</id><content type="html" xml:base="http://localhost:4000/2020/04/04/Test-Coverage-at-last.html">&lt;p&gt;Spent the day working on test coverage, since I had basically none (oops *_*).
+A little painful at first, but I’m getting the hang of it.  &lt;del&gt;Unfortunately&lt;/del&gt; I
+got the &lt;em&gt;opportunity&lt;/em&gt; to learn a bunch of things, one of which is that I
+probably shouldn’t require all attributes of a model to be present in order to
+process an update. If only one attribute comes in, as long as it’s on the
+whitelist the app shouldn’t get hung up on the attributes that aren’t there.
+And manually typing in a bunch of params hashes for testing model updates has
+made that painfully clear. :)&lt;/p&gt;
+
+&lt;p&gt;I also ran into an as-of-yet-unsolved problem with test fixtures - how do I
+describe ActiveRecord associations in YAML? I’m sure there’s some Railsy
+special syntax sauce that will let me do it, but I tried the “official”
+rubyguides way of id-less labelling and it didn’t do squat. The problem lies in
+the _header partial, the navbar. When you’re logged in, the “Sign-in” button
+is replaced with a “Profile” button, which for now just shows you a list of all
+the recipes you’ve favorited (eventually that’s where you’ll make meal plans
+and grocery lists and whatnot as well). That view creates the link with a
+reference to current_user.user_profile, but user_profiles are a separate
+model from users, connected through a join table, and since I can’t figure out
+associations in the test fixtures, any testing that logs in and then visits any
+page with the “Profile” link fails on account of not being able to load
+current_user.user_profile and build the link.&lt;/p&gt;
+
+&lt;p&gt;Sigh. This means that I can’t verify that the admin is allowed to do things
+like create/update/destroy recipes, ingredients, or whatever. I have to be
+satisfied with only verifying that non-logged-in and non-admin users &lt;strong&gt;can’t&lt;/strong&gt;
+do those things, which is to say I’m not satisfied at all. In fact I’m super
+bothered by it, but I spent quite a bit of time hunting through the tubes for
+answers and got nothing, so I’m moving on to finish the rest of the tests and
+come back after.&lt;/p&gt;
+
+&lt;p&gt;That said, I’ve only gotten through recipes and most of ingredients. I still
+have equipment and both kinds of tags. I haven’t even gotten to model testing
+yet, though thankfully Hyperchef is still 99% REST so that stuff should go
+quick when I get there.&lt;/p&gt;
+
+&lt;p&gt;Other than that, I continue to march toward launching. Still need to add
+roughly a billion more recipes to make it look real, not to mention that it
+doesn’t look anything like a “modern” recipe website with giant pictures of
+food or anything, but hopefully that doesn’t get in the way. I can always
+change it if I get a lot of “Soo….this is it, huh?” from friends and family.&lt;/p&gt;</content><author><name></name></author><summary type="html">Spent the day working on test coverage, since I had basically none (oops *_*). A little painful at first, but I’m getting the hang of it. Unfortunately I got the opportunity to learn a bunch of things, one of which is that I probably shouldn’t require all attributes of a model to be present in order to process an update. If only one attribute comes in, as long as it’s on the whitelist the app shouldn’t get hung up on the attributes that aren’t there. And manually typing in a bunch of params hashes for testing model updates has made that painfully clear. :)</summary></entry><entry><title type="html">N+1</title><link href="http://localhost:4000/2020/03/31/N+1.html" rel="alternate" type="text/html" title="N+1" /><published>2020-03-31T00:00:00-04:00</published><updated>2020-03-31T00:00:00-04:00</updated><id>http://localhost:4000/2020/03/31/N+1</id><content type="html" xml:base="http://localhost:4000/2020/03/31/N+1.html">&lt;p&gt;One more step toward the finish line! Today I started with some styling stuff
 Cassi and Micah pointed out yesterday: the unit conversions on recipe#show are
 now radio buttons instead of a dropdown, and serving size is a dropdown instead
 of a number input. I also changed the main search bar and filter button around
@@ -251,7 +536,7 @@ enough space to fit everything without one.&lt;/p&gt;
 &lt;p&gt;Finally, I am aware that my UI powers are held back by not using React or some
 other modern frontend framework, but I’m still wrapping my head around the 
 Rails backend stuff, so I’m keeping it vanilla Rails server-side-rendering for
-now. I can always build a React frontend later (and I intend to).&lt;/p&gt;</content><author><name>chris</name></author><summary type="html">Now that the intro stuff is out of the way, here’s what I did today:</summary></entry><entry><title type="html">Begin Hyperchef Log Alpha</title><link href="http://localhost:4000/2020/03/16/begin-hyperchef-log-alpha.html" rel="alternate" type="text/html" title="Begin Hyperchef Log Alpha" /><published>2020-03-16T00:00:00-04:00</published><updated>2020-03-16T00:00:00-04:00</updated><id>http://localhost:4000/2020/03/16/begin-hyperchef-log-alpha</id><content type="html" xml:base="http://localhost:4000/2020/03/16/begin-hyperchef-log-alpha.html">&lt;p&gt;Well, I guess it’s time I start blogging about this. I’ve been working on
+now. I can always build a React frontend later (and I intend to).&lt;/p&gt;</content><author><name>chris</name></author><summary type="html">Now that the intro stuff is out of the way, here’s what I did today:</summary></entry><entry><title type="html">Begin Hyperchef Log</title><link href="http://localhost:4000/2020/03/16/begin-hyperchef-log.html" rel="alternate" type="text/html" title="Begin Hyperchef Log" /><published>2020-03-16T00:00:00-04:00</published><updated>2020-03-16T00:00:00-04:00</updated><id>http://localhost:4000/2020/03/16/begin-hyperchef-log</id><content type="html" xml:base="http://localhost:4000/2020/03/16/begin-hyperchef-log.html">&lt;p&gt;Well, I guess it’s time I start blogging about this. I’ve been working on
 Hyperchef (working title) for about a month now, in place of The Odin Project’s
 Rails final project. They wanted me to replicate Facebook, mainly to get
 experience with users and ActiveRecord associations. I wanted something
