@@ -6,9 +6,8 @@ permalink: /projects/
 
 ## Big Projects
 
-**[List Reactor](https://cgardn.github.io/list-reactor)**
-
-A drag-and-drop digital todo-list/planner, sort of like a more calendar-focused Trello. It started as an experiment for learning React, but now I'm working on turning into something that at least my wife and I both want to use. Still in alpha at the moment, remaining features are drag-reordering of todos and a backend for user auth and saving todos beyond a page refresh.
+**[List Reactor](https://cgardn.github.io/list-reactor)**  
+A drag-and-drop digital todo-list/planner, sort of like a more calendar-focused Trello. It started as an experiment for learning React, but now I'm working on turning into something that at least my wife and I both want to use. Still in alpha at the moment, remaining features are drag-reordering of todos and a backend for user auth and saving todos beyond a page refresh.  
 [github](https://github.com/cgardn/list-reactor)
 
 **[Hyperchef](https://secret-hollows-21988.herokuapp.com)**  
