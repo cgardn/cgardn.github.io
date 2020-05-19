@@ -1,0 +1,41 @@
+- I've had enough !!  the drag-and-drop spec is terrible.
+  Like, seriously, it's bad. I only tolerated it for the
+  last couple weeks because I didn't know any better, but
+  now that I've looked around for advice I've discovered
+  that having 7 different events describing pickup, travel,
+  and drop of an element is...???  oh, and most of the DnD
+  API is not supported by iOS Safari. So there's that.  I
+  could re-do everything with mouse/pointer events, but I'm
+  not in the business of re-inventing the wheel unless I
+  absolutely have to, and honestly I think I've learned
+  enough about Drag-n-Drop to know that I can't do better
+  than react-dnd (link) or react-beautiful-dnd (link). 
+
+  The whole reason I got into the weeds on drag-and-drop is
+  because of my choice of Baby's First React Project, a
+  Todo-list like everyone else. Except I actually want to
+  use my version of a Todo-list, so I really committed to
+  making it work. I'm still committed, only now I'm
+  committed to finishing rather than banging my head against
+  the drag-API-wall. So brace yourselves -
+  react-beautiful-dnd incoming! 
+
+- why separate reducers for lists and items?  -> react needs
+  unique keys for lists, and since you can move things
+  around those keys need to be unique across the board to
+  avoid conflicts without having to re-assign keys everytime
+  an item is inserted. For this reason, the board needs to
+  generate unique ids for new items anyway -> this created
+  the opportunity to flatten the board data structure, which
+  is useful since I'm using reducers - so updating text
+  content of a TODO item doesn't require iterating over
+  multiple lists to find the right list, then iterating over
+  each item to find the right item, then changing the
+  content, on every keypress.  -> I could avoid that by
+  making the lists be maps of items, but then I have to
+  maintain some sense of item order as a property of items.
+  Or an array of item id's as a property of the list object.
+  I figured creating a new property to manage organization
+  only was too much mental overhead, so I went with the way
+  I have now as the most conceptually simple way I could
+  think about it
