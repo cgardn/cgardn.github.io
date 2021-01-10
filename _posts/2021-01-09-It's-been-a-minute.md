@@ -76,21 +76,21 @@ matching their ID would waste space on empty array slots for IDs that aren't
 used.
 
 ## Caching on the backend
-That brings me to the other half - making it fast. Performing these array
+That brings me to the next piece - making it efficient. Performing these array
 operations on the backend could work just fine, but my budget for server time
 is extremely limited, so a primary design goal was pushing as much computation
 to the client as possible. Since all the filter arrays are static data, I
-put them all in Rails' memory cache and send everything to the
-client on the initial pageload, where Vue handles the actual array operations.
-The only recipe data required for the search page is just what's required to
-display on the clickable cards (title, required time, and a numerical score
-for ingredient count and relative complexity). Since there's no ads and just
-one hero graphic, the total pageload size is still quite small - the search
-data for the test database of 500 recipes fits into less than 100kB. There's
-also plenty of room left for optimization, like shrinking the attribute names
-to reduce the number of characters being sent. If I ever find the time to
-grow the recipe count into the thousands I may need a different strategy, but
-that's a long way down the road from here.
+put them in Rails' memory cache and send everything to the client on the
+initial pageload, where Vue handles the actual array operations.  The only
+recipe data required for the search page is just what's required to display on
+the clickable cards (title, required time, and a numerical score for
+ingredient count and relative complexity). Since there's no ads and just one
+image (the hero graphic), the total pageload size is still quite small - the
+search data for the test database of 500 recipes fits into less than 100kB.
+There's also plenty of room left for optimization, like shrinking the
+attribute names to reduce the number of characters being sent. If I ever find
+the time to grow the recipe count into the thousands I may need a different
+strategy, but that's a long way down the road from here.
 
 ## Admin panel
 No one will ever see them, but I added basic admin panels for adding and
@@ -108,8 +108,8 @@ of things on the TODO list, including but not limited to:
 - MUCH more content
 - Toggling whole filter categories at once
 - Dietary restrictions as filters (gluten-free, jain-friendly, etc)
-- Actual consideration of aesthetics and modern design
+- Actual consideration of modern aesthetics
 - CSS transitions to make it \*fancy\*
 
 I'm focused on the job hunt for now, but once things settle down progress will
-continue. I've a
+continue. Onward!
