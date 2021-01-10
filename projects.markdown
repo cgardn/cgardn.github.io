@@ -10,9 +10,9 @@ permalink: /projects/
 A drag-and-drop digital todo-list/planner, sort of like a more calendar-focused Trello. It started as an experiment for learning React, but now I'm working on turning into something that at least my wife and I both want to use. Still in alpha at the moment, remaining features are drag-reordering of todos and a backend for user auth and saving todos beyond a page refresh.  
 [github](https://github.com/cgardn/list-reactor)
 
-**[Hyperchef](https://secret-hollows-21988.herokuapp.com)**  
+**[Hyperchef](https://cgardn.github.io/hyperchef/)**  
 I hate hunting through paragraphs of prose on recipe sites, so I made one that cuts through the fluff. Built on Rails, styled with Bootstrap, includes user accounts with Devise for saving favorite recipes. Upcoming features include meal plans, a shopping-list generator, and many more recipes!  
-[github](https://github.com/cgardn/recipesabc)
+[github-frontend](https://github.com/cgardn/hyperchef-frontend) | [github-backend](https://github.com/cgardn/hyperchef) | 
 
 
 ## Student Projects
