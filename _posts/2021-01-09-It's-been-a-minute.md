@@ -1,49 +1,47 @@
 Just like that, 10 months later.
 
-Shortly after the last post, I was contacted through a post on hackernews and
-offered a spot on a small startup team working in the Mozilla Builders
-program. I was building a VueJS SPA and assisting on a NodeJS/MongoDB backend.
-The short version is, this as-of-yet-unnamed startup is on indefinite hiatus
-due to a variety of team-related obstacles, but maybe I'll get to tell you
-about it someday :)
+Shortly after the last post, I was contacted through a thread on hackernews
+and offered a spot on a small startup team working in the Mozilla Builders
+program. I spent most of the rest of the year building a VueJS SPA frontend
+solo and assisting on a NodeJS/MongoDB backend. The short version is, this
+as-of-yet-unnamed startup is on indefinite hiatus due to a variety of
+team-related obstacles, but maybe I'll get to tell you about it someday :)
 
 Oh, and 2020 happened, too.
 
-### But, now it's a new year 
-## And that means new things!
+# But, now it's a new year, and that means new things!
 
-I rewrote the Hyperchef frontend in VueJS, because Vue is ~amazing~. The Rails
-app got a full set of api routes, and was upgraded to Rails 6. It doesn't look
-too different, but there's a few decently large new things I want to go
-over:
+I rewrote the [Hyperchef](https://cgardn.github.io/hyperchef/) frontend in
+VueJS, because Vue is ~amazing.~ The Rails app got a full set of api routes,
+and was upgraded to Rails 6. It doesn't look too different, but there's a few
+decently large new things I want to go over:
 
-### Recipe filter buttons that actually work
-One of the main goals I had for Hyperchef was to make discovery more natural,
-and by that I mean more aligned with the way I personally think about coming
-up with something to eat. 
+## Recipe filter buttons that actually work
+One of the main goals I had for Hyperchef was to make recipe discovery more
+natural, and by that I mean more aligned with the way I personally think about
+coming up with something to eat. 
 
-My experience may not be universal, but I have two main problems with figuring
+My experience may not be universal, but I have two main problems when figuring
 out what to cook:
 
 - meal planning is a lot of mental energy
 - tracking kitchen inventory is a lot of mental energy
 
-This means that no matter how well thought out or well-intentioned my shopping
-trips are, I still wind up with a mish-mash of ingredients and leftovers, and
-even when I find a recipe that I'd like to try, I never have all the
-ingredients.
+No matter how well thought out or well-intentioned my shopping trips are, I
+still wind up with a mish-mash of ingredients and leftovers, and even when I
+find a recipe that I'd like to try, I never have everything I need.
 
-My solution to this is inclusive/exclusive filter buttons of ingredients,
-sorted by ingredient category. I want to approach recipe discovery by just
-looking in the fridge and tapping all the things I actually have, and seeing
-what recipes pop up. This drastically reduces the time spent hunting through
-recipes, because by the time you're actually reading one you're already
-guaranteed to have everything you need on hand. 
+Hyperchef's solution to this is inclusive/exclusive filter buttons of
+ingredients, sorted by ingredient category. I want to approach recipe
+discovery by just looking in the fridge and tapping all the things I actually
+have, and see what recipes pop up. This drastically reduces the time spent
+hunting through recipes, because by the time you're actually reading one
+you're already guaranteed to have everything you need on hand. 
 
 Selecting a filter is instant, removing everything that doesn't include
 whatever you just picked. Select "tomato paste," and all recipes with no
 tomato paste are gone. Adding additional filters further narrows your
-selection. In the future you'll have exclusive filters too, like
+selection. In the future you'll have additive-exclusive filters too, like
 adding all the recipes that *don't* have chicken, for example.
 
 I think it's pretty effective in practice, though there's hardly any actual
@@ -55,7 +53,7 @@ annoying. Or even worse, searching for one of the ingredients and hoping
 there's a decent "advanced filters" option after I wait through the initial
 search.
 
-## How it's done
+### How it's done
 Each thing that can be searched by (a 'filter') has a specific set of recipes
 that it applies to, so each filter gets an array with all those recipe IDs
 Since array intersections are commutative, it's just a series of array
@@ -77,7 +75,7 @@ avoid array searching. Assigning recipes to a particular spot in an array
 matching their ID would waste space on empty array slots for IDs that aren't
 used.
 
-### Caching on the backend
+## Caching on the backend
 That brings me to the other half - making it fast. Performing these array
 operations on the backend could work just fine, but my budget for server time
 is extremely limited, so a primary design goal was pushing as much computation
@@ -94,11 +92,11 @@ to reduce the number of characters being sent. If I ever find the time to
 grow the recipe count into the thousands I may need a different strategy, but
 that's a long way down the road from here.
 
-### Admin panel
+## Admin panel
 No one will ever see them, but I added basic admin panels for adding and
 editing the resources - which is good, because they're incredibly ugly ;)
 
-### Minor design change
+## Minor design change
 Finally, there's a slightly new look as well - the custom images are gone,
 replaced with a much lighter flat theme with Bootstrap (css only).  No fancy
 transitions yet as there hasn't been a lot of time for polish, but that's
