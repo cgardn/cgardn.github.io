@@ -1,4 +1,4 @@
-Just like that, 10 months later.
+Just like that, 9 months later.
 
 Shortly after the last post, I was contacted through a thread on hackernews
 and offered a spot on a small startup team working in the Mozilla Builders
