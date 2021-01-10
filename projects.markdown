@@ -12,7 +12,7 @@ A drag-and-drop digital todo-list/planner, sort of like a more calendar-focused 
 
 **[Hyperchef](https://cgardn.github.io/hyperchef/)**  
 I hate hunting through paragraphs of prose on recipe sites, so I made one that cuts through the fluff. Built on Rails, styled with Bootstrap, includes user accounts with Devise for saving favorite recipes. Upcoming features include meal plans, a shopping-list generator, and many more recipes!  
-[github-frontend](https://github.com/cgardn/hyperchef-frontend) | [github-backend](https://github.com/cgardn/hyperchef) | 
+[github-frontend](https://github.com/cgardn/hyperchef-frontend) | [github-backend](https://github.com/cgardn/hyperchef)
 
 
 ## Student Projects
