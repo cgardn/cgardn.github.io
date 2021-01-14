@@ -55,7 +55,7 @@ search.
 
 ### How it's done
 Each thing that can be searched by (a 'filter') has a specific set of recipes
-that it applies to, so each filter gets an array with all those recipe IDs
+that it applies to, so each filter gets an array with all those recipe IDs.
 Since array intersections are commutative, it's just a series of array
 intersections between the selected filters' recipe lists and the list of all
 recipes.
@@ -107,7 +107,7 @@ of things on the TODO list, including but not limited to:
 - More compact design of the filter panel
 - MUCH more content
 - Toggling whole filter categories at once
-- Dietary restrictions as filters (gluten-free, jain-friendly, etc)
+- Dietary restrictions as filters (gluten-free, Jain-friendly, etc)
 - Actual consideration of modern aesthetics
 - CSS transitions to make it \*fancy\*
 
