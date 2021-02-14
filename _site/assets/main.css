@@ -57,7 +57,7 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 @media screen and (max-width: 800px) { .wrapper { max-width: -webkit-calc(800px - (30px)); max-width: calc(800px - (30px)); padding-right: 15px; padding-left: 15px; } }
 
 /** Clearfix */
-.wrapper:after, .footer-col-wrapper:after { content: ""; display: table; clear: both; }
+.footer-col-wrapper:after, .wrapper:after { content: ""; display: table; clear: both; }
 
 /** Icons */
 .svg-icon { width: 16px; height: 16px; display: inline-block; fill: #828282; padding-right: 5px; vertical-align: text-top; }
@@ -92,14 +92,7 @@ table td { border: 1px solid #e8e8e8; }
 
 .site-nav .page-link:not(:last-child) { margin-right: 20px; }
 
-@media screen and (max-width: 600px) { .site-nav { position: absolute; top: 9px; right: 15px; background-color: #fdfdfd; border: 1px solid #e8e8e8; border-radius: 5px; text-align: right; }
-  .site-nav label[for="nav-trigger"] { display: block; float: right; width: 36px; height: 36px; z-index: 2; cursor: pointer; }
-  .site-nav .menu-icon { display: block; float: right; width: 36px; height: 26px; line-height: 0; padding-top: 10px; text-align: center; }
-  .site-nav .menu-icon > svg { fill: #424242; }
-  .site-nav input ~ .trigger { clear: both; display: none; }
-  .site-nav input:checked ~ .trigger { display: block; padding-bottom: 5px; }
-  .site-nav .page-link { display: block; padding: 5px 10px; margin-left: 20px; }
-  .site-nav .page-link:not(:last-child) { margin-right: 0; } }
+@media screen and (max-width: 600px) { .site-nav { position: absolute; top: 9px; right: 15px; background-color: #fdfdfd; border: 1px solid #e8e8e8; border-radius: 5px; text-align: right; } .site-nav label[for="nav-trigger"] { display: block; float: right; width: 36px; height: 36px; z-index: 2; cursor: pointer; } .site-nav .menu-icon { display: block; float: right; width: 36px; height: 26px; line-height: 0; padding-top: 10px; text-align: center; } .site-nav .menu-icon > svg { fill: #424242; } .site-nav input ~ .trigger { clear: both; display: none; } .site-nav input:checked ~ .trigger { display: block; padding-bottom: 5px; } .site-nav .page-link { display: block; padding: 5px 10px; margin-left: 20px; } .site-nav .page-link:not(:last-child) { margin-right: 0; } }
 
 /** Site footer */
 .site-footer { border-top: 1px solid #e8e8e8; padding: 30px 0; }
@@ -118,8 +111,7 @@ table td { border: 1px solid #e8e8e8; }
 
 .footer-col-3 { width: -webkit-calc(45% - (30px / 2)); width: calc(45% - (30px / 2)); }
 
-@media screen and (max-width: 800px) { .footer-col-1, .footer-col-2 { width: -webkit-calc(50% - (30px / 2)); width: calc(50% - (30px / 2)); }
-  .footer-col-3 { width: -webkit-calc(100% - (30px / 2)); width: calc(100% - (30px / 2)); } }
+@media screen and (max-width: 800px) { .footer-col-1, .footer-col-2 { width: -webkit-calc(50% - (30px / 2)); width: calc(50% - (30px / 2)); } .footer-col-3 { width: -webkit-calc(100% - (30px / 2)); width: calc(100% - (30px / 2)); } }
 
 @media screen and (max-width: 600px) { .footer-col { float: none; width: -webkit-calc(100% - (30px / 2)); width: calc(100% - (30px / 2)); } }
 
@@ -281,5 +273,40 @@ table td { border: 1px solid #e8e8e8; }
 .highlight .vi { color: #008080; }
 
 .highlight .il { color: #099; }
+
+.hero-image { width: 200px; margin: auto; opacity: 0; animation-name: fadein; animation-delay: 1.5s; animation-duration: 0.5s; animation-fill-mode: forwards; }
+
+.landing-wrap { display: flex; flex-direction: column; }
+
+.landing-title { margin: auto 0; flex: 1 0 100%; display: flex; }
+
+.landing-link-wrap { margin: auto 0; flex: 0 0 auto; display: flex; }
+
+.landing-link-animation { opacity: 0; animation-name: fadein; animation-delay: 1.5s; animation-duration: 0.5s; animation-fill-mode: forwards; }
+
+.landing-link { margin: auto 3px; }
+
+.center { text-align: center; }
+
+.animate-left { animation-name: slideleft; animation-duration: 1.5s; margin-right: 10px; }
+
+@keyframes slideleft { from { transform: translate(100%, 0); }
+  to { transform: translate(0, 0); } }
+
+.animate-divider { animation-name: fadein; animation-duration: 0.75s; }
+
+@keyframes fadein { from { opacity: 0; }
+  to { opacity: 100%; } }
+
+.animate-right { animation-name: slideright; animation-duration: 1.5s; margin-left: 10px; }
+
+@keyframes slideright { from { transform: translate(-100%, 0); }
+  to { transform: translate(0%, 0); } }
+
+.landing-left { flex: 1 0 47%; text-align: right; overflow-x: hidden; }
+
+.landing-divider { flex: 0 0 1%; text-align: center; }
+
+.landing-right { flex: 1 0 47%; overflow-x: hidden; }
 
 /*# sourceMappingURL=main.css.map */

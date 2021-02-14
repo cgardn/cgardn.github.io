@@ -1,4 +1,122 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-01T20:10:21-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Gardner | WebDev</title><subtitle>I'm Chris Gardner, a former biomedical engineer, then photographer, now web developer. Ask me anything!</subtitle><entry><title type="html">Remote Form Submission In Rails&amp;#8230;?</title><link href="http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/html" rel="alternate" type="text/html" title="Remote Form Submission In Rails...?" /><published>2020-04-09T00:00:00-04:00</published><updated>2020-04-09T00:00:00-04:00</updated><id>http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/Remote-form-submission-in-Rails...</id><content type="html" xml:base="http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/html">&lt;h2 id=&quot;preamble&quot;&gt;Preamble&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-14T17:03:35-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Chris Gardner | Fullstack Dev</title><subtitle>I'm Chris Gardner, a former biomedical engineer, then photographer, now web developer. Ask me anything!</subtitle><entry><title type="html">It&amp;#8217;s Been A Minute</title><link href="http://localhost:4000/2021/01/09/It's-been-a-minute.html" rel="alternate" type="text/html" title="It&amp;#8217;s Been A Minute" /><published>2021-01-09T00:00:00-05:00</published><updated>2021-01-09T00:00:00-05:00</updated><id>http://localhost:4000/2021/01/09/It's-been-a-minute</id><content type="html" xml:base="http://localhost:4000/2021/01/09/It's-been-a-minute.html">&lt;p&gt;Just like that, 9 months later.&lt;/p&gt;
+
+&lt;p&gt;Shortly after the last post, I was contacted through a thread on hackernews
+and offered a spot on a small startup team working in the Mozilla Builders
+program. I spent most of the rest of the year building a VueJS SPA frontend
+solo and assisting on a NodeJS/MongoDB backend. The short version is, this
+as-of-yet-unnamed startup is on indefinite hiatus due to a variety of
+team-related obstacles, but maybe I’ll get to tell you about it someday :)&lt;/p&gt;
+
+&lt;p&gt;Oh, and 2020 happened, too.&lt;/p&gt;
+
+&lt;h1 id=&quot;but-now-its-a-new-year-and-that-means-new-things&quot;&gt;But, now it’s a new year, and that means new things!&lt;/h1&gt;
+
+&lt;p&gt;I rewrote the &lt;a href=&quot;https://cgardn.github.io/hyperchef/&quot;&gt;Hyperchef&lt;/a&gt; frontend in
+VueJS, because Vue is ~amazing.~ The Rails app got a full set of api routes,
+and was upgraded to Rails 6. It doesn’t look too different, but there’s a few
+decently large new things I want to go over:&lt;/p&gt;
+
+&lt;h2 id=&quot;recipe-filter-buttons-that-actually-work&quot;&gt;Recipe filter buttons that actually work&lt;/h2&gt;
+&lt;p&gt;One of the main goals I had for Hyperchef was to make recipe discovery more
+natural, and by that I mean more aligned with the way I personally think about
+coming up with something to eat.&lt;/p&gt;
+
+&lt;p&gt;My experience may not be universal, but I have two main problems when figuring
+out what to cook:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;meal planning is a lot of mental energy&lt;/li&gt;
+  &lt;li&gt;tracking kitchen inventory is a lot of mental energy&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;No matter how well thought out or well-intentioned my shopping trips are, I
+still wind up with a mish-mash of ingredients and leftovers, and even when I
+find a recipe that I’d like to try, I never have everything I need.&lt;/p&gt;
+
+&lt;p&gt;Hyperchef’s solution to this is inclusive/exclusive filter buttons of
+ingredients, sorted by ingredient category. I want to approach recipe
+discovery by just looking in the fridge and tapping all the things I actually
+have, and see what recipes pop up. This drastically reduces the time spent
+hunting through recipes, because by the time you’re actually reading one
+you’re already guaranteed to have everything you need on hand.&lt;/p&gt;
+
+&lt;p&gt;Selecting a filter is instant, removing everything that doesn’t include
+whatever you just picked. Select “tomato paste,” and all recipes with no
+tomato paste are gone. Adding additional filters further narrows your
+selection. In the future you’ll have additive-exclusive filters too, like
+adding all the recipes that &lt;em&gt;don’t&lt;/em&gt; have chicken, for example.&lt;/p&gt;
+
+&lt;p&gt;I think it’s pretty effective in practice, though there’s hardly any actual
+recipe content yet (I’m working on it). It also led to a somewhat radical
+design choice - there’s no text search bar. I don’t think it’s necessary, at
+least for me. I only know what ingredients I have on hand, and
+typing 5 or 10 things into a text box and hoping it gets what I mean is
+annoying. Or even worse, searching for one of the ingredients and hoping
+there’s a decent “advanced filters” option after I wait through the initial
+search.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-its-done&quot;&gt;How it’s done&lt;/h3&gt;
+&lt;p&gt;Each thing that can be searched by (a ‘filter’) has a specific set of recipes
+that it applies to, so each filter gets an array with all those recipe IDs.
+Since array intersections are commutative, it’s just a series of array
+intersections between the selected filters’ recipe lists and the list of all
+recipes.&lt;/p&gt;
+
+&lt;p&gt;These lists are built for recipe types (breakfast, dinner), and ingredients
+(beef, tomato paste). There are plans to include ingredient tags (meat,
+vegetable) as toggles too, plus other categories (kosher, halal).&lt;/p&gt;
+
+&lt;p&gt;All of these lists live in a hash, keyed by the text name of the filter. This
+keeps things quick when finding the list for whatever button was pushed.&lt;/p&gt;
+
+&lt;p&gt;After the intersections are done, the remaining list of ids is checked against
+a hash of all the recipes, where each key is the numerical recipe ID. This is
+because as recipes are added or deleted, the recipe IDs may not remain a
+contiguous set of numbers, so I need a hash to guarantee direct access and
+avoid array searching. Assigning recipes to a particular spot in an array
+matching their ID would waste space on empty array slots for IDs that aren’t
+used.&lt;/p&gt;
+
+&lt;h2 id=&quot;caching-on-the-backend&quot;&gt;Caching on the backend&lt;/h2&gt;
+&lt;p&gt;That brings me to the next piece - making it efficient. Performing these array
+operations on the backend could work just fine, but my budget for server time
+is extremely limited, so a primary design goal was pushing as much computation
+to the client as possible. Since all the filter arrays are static data, I
+put them in Rails’ memory cache and send everything to the client on the
+initial pageload, where Vue handles the actual array operations.  The only
+recipe data required for the search page is just what’s required to display on
+the clickable cards (title, required time, and a numerical score for
+ingredient count and relative complexity). Since there’s no ads and just one
+image (the hero graphic), the total pageload size is still quite small - the
+search data for the test database of 500 recipes fits into less than 100kB.
+There’s also plenty of room left for optimization, like shrinking the
+attribute names to reduce the number of characters being sent. If I ever find
+the time to grow the recipe count into the thousands I may need a different
+strategy, but that’s a long way down the road from here.&lt;/p&gt;
+
+&lt;h2 id=&quot;admin-panel&quot;&gt;Admin panel&lt;/h2&gt;
+&lt;p&gt;No one will ever see them, but I added basic admin panels for adding and
+editing the resources - which is good, because they’re incredibly ugly ;)&lt;/p&gt;
+
+&lt;h2 id=&quot;minor-design-change&quot;&gt;Minor design change&lt;/h2&gt;
+&lt;p&gt;Finally, there’s a slightly new look as well - the custom images are gone,
+replaced with a much lighter flat theme with Bootstrap (css only).  No fancy
+transitions yet as there hasn’t been a lot of time for polish, but that’s
+coming Soon™.&lt;/p&gt;
+
+&lt;p&gt;Overall, I’m happy with the progress, but not the current state. There’s a ton
+of things on the TODO list, including but not limited to:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;More compact design of the filter panel&lt;/li&gt;
+  &lt;li&gt;MUCH more content&lt;/li&gt;
+  &lt;li&gt;Toggling whole filter categories at once&lt;/li&gt;
+  &lt;li&gt;Dietary restrictions as filters (gluten-free, Jain-friendly, etc)&lt;/li&gt;
+  &lt;li&gt;Actual consideration of modern aesthetics&lt;/li&gt;
+  &lt;li&gt;CSS transitions to make it *fancy*&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’m focused on the job hunt for now, but once things settle down progress will
+continue. Onward!&lt;/p&gt;</content><author><name></name></author><summary type="html">Just like that, 9 months later.</summary></entry><entry><title type="html">Remote Form Submission In Rails&amp;#8230;?</title><link href="http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/html" rel="alternate" type="text/html" title="Remote Form Submission In Rails&amp;#8230;?" /><published>2020-04-09T00:00:00-04:00</published><updated>2020-04-09T00:00:00-04:00</updated><id>http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/Remote-form-submission-in-Rails...</id><content type="html" xml:base="http://localhost:4000/2020/04/09/Remote-form-submission-in-Rails/html">&lt;h2 id=&quot;preamble&quot;&gt;Preamble&lt;/h2&gt;
 
 &lt;p&gt;Hyperchef handles nearly all its buttons as forms. My first instinct was to 
 make them AJAX calls, as is the modern way, but I immediately discovered that
@@ -575,19 +693,4 @@ probably keep going a bit further. I want to be able to take those favorite
 recipes, add them to a weekly meal planner (or at least to a titled list), and
 press a button to get a tabulated grocery list that sums all the ingredients
 from all the recipes you picked for easy shopping. That’s the tool I want that
-doesn’t exist, so once I can do all that I think I’ll be satisfied.&lt;/p&gt;</content><author><name>chris</name></author><summary type="html">Well, I guess it’s time I start blogging about this. I’ve been working on Hyperchef (working title) for about a month now, in place of The Odin Project’s Rails final project. They wanted me to replicate Facebook, mainly to get experience with users and ActiveRecord associations. I wanted something different though, something more useful to me than a fake social media site, so I’m building a recipe site instead.</summary></entry><entry><title type="html">First Post</title><link href="http://localhost:4000/2020/03/15/first-post.html" rel="alternate" type="text/html" title="First Post" /><published>2020-03-15T00:00:00-04:00</published><updated>2020-03-15T00:00:00-04:00</updated><id>http://localhost:4000/2020/03/15/first-post</id><content type="html" xml:base="http://localhost:4000/2020/03/15/first-post.html">&lt;p&gt;Well, it finally happened - I got a website! It may be a github.io site, but
-it’s better than the big zip I had before. Most of the blog posts for a while
-are going to be about the only Big Project I have right now,
-&lt;a href=&quot;https://hyperchef.herokuapp.com&quot;&gt;Hyperchef&lt;/a&gt;. It’s a recipe site, but you’ll
-be hearing a lot more about it in the next several posts, so I hope you like
-rambling thoughts on Rails app design!&lt;/p&gt;
-
-&lt;p&gt;That’s what this blog will probably end up being: unsorted thoughts on current
-projects, frustration at problems I’m stuck on, jubiliation when I’ve solved
-them. Consider this less of a “10 quick tips for better coding” blog and more
-of a “Holy wow I can’t believe I didn’t think of that…well it might’ve taken
-two days but at least it’s fixed now” blog.&lt;/p&gt;
-
-&lt;p&gt;Also, there might be pictures of my cats at some point, I haven’t decided.&lt;/p&gt;
-
-&lt;p&gt;(but there probably will be)&lt;/p&gt;</content><author><name>chris</name></author><summary type="html">Well, it finally happened - I got a website! It may be a github.io site, but it’s better than the big zip I had before. Most of the blog posts for a while are going to be about the only Big Project I have right now, Hyperchef. It’s a recipe site, but you’ll be hearing a lot more about it in the next several posts, so I hope you like rambling thoughts on Rails app design!</summary></entry></feed>
+doesn’t exist, so once I can do all that I think I’ll be satisfied.&lt;/p&gt;</content><author><name>chris</name></author><summary type="html">Well, I guess it’s time I start blogging about this. I’ve been working on Hyperchef (working title) for about a month now, in place of The Odin Project’s Rails final project. They wanted me to replicate Facebook, mainly to get experience with users and ActiveRecord associations. I wanted something different though, something more useful to me than a fake social media site, so I’m building a recipe site instead.</summary></entry></feed>
