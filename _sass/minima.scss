@@ -73,7 +73,7 @@ $on-laptop:        800px !default;
 
 /* -- Style -- */
 // vars
-$light_bg:       #f4f4f4;
+$light_bg:        #f4f4f4;
 $light_text:      #333333;
 $linkcolor:       #557aff;
 $linkcolor_hover: #558aad;
@@ -160,11 +160,12 @@ $linkdelay: 0.20s;
 .landing-link-layout {
   margin-top: 20px;
   margin-bottom: 0;
-  flex: 0 0 auto;
+  flex: 0 1 80%;
   display: flex;
   justify-content: center;
 }
 .link-anim {
+  opacity: 0;
   animation-name: heroimageanim;
   animation-duration: $linkduration;
   animation-fill-mode: forwards;
@@ -172,6 +173,10 @@ $linkdelay: 0.20s;
 .la-1 { animation-delay: $slidetime + $linkdelay + $linkduration;}
 .la-2 { animation-delay: $slidetime + $linkdelay + $linkduration + $linkdurspace; }
 .la-3 { animation-delay: $slidetime + $linkdelay + $linkduration + ($linkdurspace * 2); }
+.la-4 { animation-delay: $slidetime + $linkdelay + $linkduration + ($linkdurspace * 3); }
+.la-5 { animation-delay: $slidetime + $linkdelay + $linkduration + ($linkdurspace * 4); }
+.la-6 { animation-delay: $slidetime + $linkdelay + $linkduration + ($linkdurspace * 5); }
+.la-7 { animation-delay: $slidetime + $linkdelay + $linkduration + ($linkdurspace * 6); }
 
 .link-left {
   flex: 1 0 40%;
@@ -190,12 +195,12 @@ $linkdelay: 0.20s;
   color: $light_bg;
   font-size: 1.3em;
   margin: auto 3px;
-  padding: 0.5em 1.2em;
+  padding: 0.5em 1.0em;
   background-color: $linkcolor;
 }
 .landing-link:hover {
   opacity: 100%;
-  text-color: $light_bg;
+  color: $light_bg;
   text-decoration: none;
   background-color: $linkcolor_hover;
   box-shadow: 1px 1px 5px grey;
@@ -251,4 +256,25 @@ $linkdelay: 0.20s;
 .landing-divider {
   flex: 0 0 1%;
   text-align: center;
+}
+.material-icons.md-32 {
+  font-size: 32px;
+}
+
+.material-icons.blueIcon {
+  color: $linkcolor;
+}
+
+span.material-icons > img {
+  margin-bottom: 15px;
+  margin-left: 3px;
+}
+span.material-icons.linkedin > img {
+  width: 32px;
+  margin-bottom: 15px;
+  margin-left: 13px;
+}
+
+.icon-spacing {
+  margin: auto 5px;
 }

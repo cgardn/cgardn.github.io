@@ -305,9 +305,9 @@ table td { border: 1px solid #e8e8e8; }
 
 .headshot-image { flex: 1 0 100%; display: block; max-width: 182px; max-height: 200px; width: auto; height: auto; margin: auto; opacity: 0; animation-name: heroimageanim; animation-duration: 0.75s; animation-delay: 0.75s; animation-fill-mode: forwards; }
 
-.landing-link-layout { margin-top: 20px; margin-bottom: 0; flex: 0 0 auto; display: flex; justify-content: center; }
+.landing-link-layout { margin-top: 20px; margin-bottom: 0; flex: 0 1 80%; display: flex; justify-content: center; }
 
-.link-anim { animation-name: heroimageanim; animation-duration: 0.25s; animation-fill-mode: forwards; }
+.link-anim { opacity: 0; animation-name: heroimageanim; animation-duration: 0.25s; animation-fill-mode: forwards; }
 
 .la-1 { animation-delay: 1.95s; }
 
@@ -315,15 +315,23 @@ table td { border: 1px solid #e8e8e8; }
 
 .la-3 { animation-delay: 2.19s; }
 
+.la-4 { animation-delay: 2.31s; }
+
+.la-5 { animation-delay: 2.43s; }
+
+.la-6 { animation-delay: 2.55s; }
+
+.la-7 { animation-delay: 2.67s; }
+
 .link-left { flex: 1 0 40%; text-align: right; }
 
 .link-divider { flex: 1 0 auto; text-align: center; }
 
 .link-right { flex: 1 0 40%; }
 
-.landing-link { opacity: 0; color: #f4f4f4; font-size: 1.3em; margin: auto 3px; padding: 0.5em 1.2em; background-color: #557aff; }
+.landing-link { opacity: 0; color: #f4f4f4; font-size: 1.3em; margin: auto 3px; padding: 0.5em 1.0em; background-color: #557aff; }
 
-.landing-link:hover { opacity: 100%; text-color: #f4f4f4; text-decoration: none; background-color: #558aad; box-shadow: 1px 1px 5px grey; }
+.landing-link:hover { opacity: 100%; color: #f4f4f4; text-decoration: none; background-color: #558aad; box-shadow: 1px 1px 5px grey; }
 
 .landing-link:visited { color: #f4f4f4; }
 
@@ -342,5 +350,15 @@ table td { border: 1px solid #e8e8e8; }
 @media screen and (max-width: 400px) { .landing-left, .landing-right { text-align: center; } }
 
 .landing-divider { flex: 0 0 1%; text-align: center; }
+
+.material-icons.md-32 { font-size: 32px; }
+
+.material-icons.blueIcon { color: #557aff; }
+
+span.material-icons > img { margin-bottom: 15px; margin-left: 3px; }
+
+span.material-icons.linkedin > img { width: 32px; margin-bottom: 15px; margin-left: 13px; }
+
+.icon-spacing { margin: auto 5px; }
 
 /*# sourceMappingURL=main.css.map */
