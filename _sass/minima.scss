@@ -53,52 +53,59 @@ $on-laptop:        800px !default;
 
 // Custom classes
 
-// animation vars
-$slidetime:   1.5s;
-
-// landing page
-.hero-image {
-  width: 200px;
-  margin: auto;
-  opacity: 0;
-  animation-name: fadein;
-  animation-delay: $slidetime;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-}
-.landing-wrap {
-  display: flex;
-  flex-direction: column;
-}
-.landing-title {
+/* -- Layout -- */
+.landing-title-layout {
   margin: auto 0;
   flex: 1 0 100%;
   display: flex;
+  justify-content: center;
 }
-.landing-link-wrap {
-  margin: auto 0;
-  flex: 0 0 auto;
-  display: flex;
-}
-.landing-link-animation {
-  opacity: 0;
-  animation-name: fadein;
-  animation-delay: $slidetime;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
+@include media-query($on-phone) {
+  .mobile-column {
+    flex-direction: column;
+  }
 }
 
-.landing-link {
-  margin: auto 3px;
+.above-fold {
+  display: flex;
+  flex-direction: column;
 }
-.center {
-  text-align: center;
+
+/* -- Style -- */
+// vars
+$light_bg:       #f4f4f4;
+$light_text:      #333333;
+$linkcolor:       #557aff;
+$linkcolor_hover: #558aad;
+
+.light_bg {
+  background-color: $light_bg;
 }
-.animate-left {
-  animation-name: slideleft;
-  animation-duration: $slidetime;
-  margin-right: 10px;
+.light_text {
+  color: $light_text;
 }
+.landing-title-style {
+  @include relative-font-size(1.625);
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  float: left;
+  color: $grey-color-dark;
+  line-height: 27px;
+
+}
+
+/* -- Animation -- */
+// vars
+$imagestartdelay: 0.75s;
+$imageduration:   0.75s;
+$slidetime:   1.5s;
+$linkduration: 0.25s;
+$linkdurspace: 0.12s;
+$linkdelay: 0.20s;
+
+// keyframes
 @keyframes slideleft {
   from {
     transform: translate(100%, 0);
@@ -106,23 +113,6 @@ $slidetime:   1.5s;
   to {
     transform: translate(0, 0);
   }
-}
-.animate-divider {
-  animation-name: fadein;
-  animation-duration: 0.75s;
-}
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 100%;
-  }
-}
-.animate-right {
-  animation-name: slideright;
-  animation-duration: $slidetime;
-  margin-left: 10px;
 }
 @keyframes slideright {
   from {
@@ -132,17 +122,133 @@ $slidetime:   1.5s;
     transform: translate(0%, 0);
   }
 }
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+@keyframes heroimageanim {
+  from {
+    opacity: 0;
+    transform: translate(0, 10%);
+  }
+  to {
+    opacity: 100%;
+    transform: translate(0, 0);
+  }
+}
+
+
+// landing page
+.headshot-image {
+  flex: 1 0 100%;
+  display: block;
+  max-width: 182px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  margin: auto;
+  opacity: 0;
+  animation-name: heroimageanim;
+  animation-duration: $imageduration;
+  animation-delay: $imagestartdelay;
+  animation-fill-mode: forwards;
+}
+.landing-link-layout {
+  margin-top: 20px;
+  margin-bottom: 0;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.link-anim {
+  animation-name: heroimageanim;
+  animation-duration: $linkduration;
+  animation-fill-mode: forwards;
+}
+.la-1 { animation-delay: $slidetime + $linkdelay + $linkduration;}
+.la-2 { animation-delay: $slidetime + $linkdelay + $linkduration + $linkdurspace; }
+.la-3 { animation-delay: $slidetime + $linkdelay + $linkduration + ($linkdurspace * 2); }
+
+.link-left {
+  flex: 1 0 40%;
+  text-align: right;
+}
+.link-divider {
+  flex: 1 0 auto;
+  text-align: center;
+}
+.link-right {
+  flex: 1 0 40%;
+}
+
+.landing-link {
+  opacity: 0;
+  color: $light_bg;
+  font-size: 1.3em;
+  margin: auto 3px;
+  padding: 0.5em 1.2em;
+  background-color: $linkcolor;
+}
+.landing-link:hover {
+  opacity: 100%;
+  text-color: $light_bg;
+  text-decoration: none;
+  background-color: $linkcolor_hover;
+  box-shadow: 1px 1px 5px grey;
+}
+.landing-link:visited {
+  color: $light_bg;
+}
+
+.summary-wrap {
+  flex: 1 0 80%;
+  width: 100%;
+  margin: auto;
+}
+.summary {
+  width: 80%;
+  opacity: 0;
+  margin: 10px auto;
+  animation-name: heroimageanim;
+  animation-delay: $slidetime;
+  animation-duration: $linkduration;
+  animation-fill-mode: forwards;
+
+}
+.animate-left {
+  overflow-y: hidden;
+  animation-name: slideleft;
+  animation-duration: $slidetime;
+  margin-right: 10px;
+  margin-left: 12px;
+}
+.animate-right {
+  overflow-y: hidden;
+  animation-name: slideright;
+  animation-duration: $slidetime;
+  margin-left: 10px;
+}
 
 .landing-left {
-  flex: 1 0 47%;
+  flex: 1 0 50%;
   text-align: right;
   overflow-x: hidden;
 }
+.landing-right {
+  flex: 1 0 50%;
+  overflow-x: hidden;
+}
+@include media-query($on-phone) {
+  .landing-left, .landing-right {
+    text-align: center;
+  }
+}
+
 .landing-divider {
   flex: 0 0 1%;
   text-align: center;
-}
-.landing-right {
-  flex: 1 0 47%;
-  overflow-x: hidden;
 }
