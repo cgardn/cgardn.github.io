@@ -213,6 +213,7 @@ $linkdelay: 0.20s;
 .summary-wrap {
   flex: 1 0 80%;
   margin: auto;
+  text-align: justify;
 }
 @include media-query($on-desktop) {
   .summary {
