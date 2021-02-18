@@ -26,6 +26,7 @@ $content-width:    800px !default;
 $on-phone:         400px !default;
 $on-palm:          600px !default;
 $on-laptop:        800px !default;
+$on-desktop:       1440px !default;
 
 // Use media queries like this:
 // @include media-query($on-palm) {
@@ -211,13 +212,22 @@ $linkdelay: 0.20s;
 
 .summary-wrap {
   flex: 1 0 80%;
-  width: 100%;
   margin: auto;
 }
+@include media-query($on-desktop) {
+  .summary {
+    width: 50%;
+    margin: 30px 28%;
+  }
+}
+@include media-query($on-phone) {
+  .summary {
+    width: 80%;
+    margin: 10px auto;
+  }
+}
 .summary {
-  width: 80%;
   opacity: 0;
-  margin: 10px auto;
   animation-name: heroimageanim;
   animation-delay: $slidetime;
   animation-duration: $linkduration;

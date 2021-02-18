@@ -335,9 +335,13 @@ table td { border: 1px solid #e8e8e8; }
 
 .landing-link:visited { color: #f4f4f4; }
 
-.summary-wrap { flex: 1 0 80%; width: 100%; margin: auto; }
+.summary-wrap { flex: 1 0 80%; margin: auto; }
 
-.summary { width: 80%; opacity: 0; margin: 10px auto; animation-name: heroimageanim; animation-delay: 1s; animation-duration: 0.25s; animation-fill-mode: forwards; }
+@media screen and (max-width: 1440px) { .summary { width: 50%; margin: 30px 28%; } }
+
+@media screen and (max-width: 400px) { .summary { width: 80%; margin: 10px auto; } }
+
+.summary { opacity: 0; animation-name: heroimageanim; animation-delay: 1s; animation-duration: 0.25s; animation-fill-mode: forwards; }
 
 .animate-left { overflow-y: hidden; animation-name: slideleft; animation-duration: 1s; margin-right: 10px; margin-left: 12px; }
 
