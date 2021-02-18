@@ -1,3 +1,9 @@
+---
+layout: post
+author: chris
+date: 2020-04-09 00:00:00 -0400
+---
+
 ## Preamble
 
 Hyperchef handles nearly all its buttons as forms. My first instinct was to 

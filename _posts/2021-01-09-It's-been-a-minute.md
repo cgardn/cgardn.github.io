@@ -1,3 +1,9 @@
+---
+layout: post
+author: chris
+date: 2021-01-09 00:00:00 -0400
+---
+
 Just like that, 9 months later.
 
 Shortly after the last post, I was contacted through a thread on hackernews

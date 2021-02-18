@@ -1,4 +1,10 @@
-My test coverage has officialy gone from zero to some. Now tests cover every
+---
+layout: post
+author: chris
+date: 2020-04-06 00:00:00 -0400
+---
+
+My test coverage has officially gone from zero to some. Now tests cover every
 user-facing page for a successful response, every resource-modifying action
 (create, update, destroy) for unauthorized access, and as many of the model
 functions as I could manage without associations; as I mentioned last time I

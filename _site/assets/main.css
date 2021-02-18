@@ -309,19 +309,19 @@ table td { border: 1px solid #e8e8e8; }
 
 .link-anim { opacity: 0; animation-name: heroimageanim; animation-duration: 0.25s; animation-fill-mode: forwards; }
 
-.la-1 { animation-delay: 1.95s; }
+.la-1 { animation-delay: 1.45s; }
 
-.la-2 { animation-delay: 2.07s; }
+.la-2 { animation-delay: 1.57s; }
 
-.la-3 { animation-delay: 2.19s; }
+.la-3 { animation-delay: 1.69s; }
 
-.la-4 { animation-delay: 2.31s; }
+.la-4 { animation-delay: 1.81s; }
 
-.la-5 { animation-delay: 2.43s; }
+.la-5 { animation-delay: 1.93s; }
 
-.la-6 { animation-delay: 2.55s; }
+.la-6 { animation-delay: 2.05s; }
 
-.la-7 { animation-delay: 2.67s; }
+.la-7 { animation-delay: 2.17s; }
 
 .link-left { flex: 1 0 40%; text-align: right; }
 
@@ -329,7 +329,7 @@ table td { border: 1px solid #e8e8e8; }
 
 .link-right { flex: 1 0 40%; }
 
-.landing-link { opacity: 0; color: #f4f4f4; font-size: 1.3em; margin: auto 3px; padding: 0.5em 1.0em; background-color: #557aff; }
+.landing-link { opacity: 0; color: #f4f4f4; font-size: 1.3em; margin: auto 3px; padding: 0.5em 0.9em; background-color: #557aff; }
 
 .landing-link:hover { opacity: 100%; color: #f4f4f4; text-decoration: none; background-color: #558aad; box-shadow: 1px 1px 5px grey; }
 
@@ -337,11 +337,11 @@ table td { border: 1px solid #e8e8e8; }
 
 .summary-wrap { flex: 1 0 80%; width: 100%; margin: auto; }
 
-.summary { width: 80%; opacity: 0; margin: 10px auto; animation-name: heroimageanim; animation-delay: 1.5s; animation-duration: 0.25s; animation-fill-mode: forwards; }
+.summary { width: 80%; opacity: 0; margin: 10px auto; animation-name: heroimageanim; animation-delay: 1s; animation-duration: 0.25s; animation-fill-mode: forwards; }
 
-.animate-left { overflow-y: hidden; animation-name: slideleft; animation-duration: 1.5s; margin-right: 10px; margin-left: 12px; }
+.animate-left { overflow-y: hidden; animation-name: slideleft; animation-duration: 1s; margin-right: 10px; margin-left: 12px; }
 
-.animate-right { overflow-y: hidden; animation-name: slideright; animation-duration: 1.5s; margin-left: 10px; }
+.animate-right { overflow-y: hidden; animation-name: slideright; animation-duration: 1s; margin-left: 10px; }
 
 .landing-left { flex: 1 0 50%; text-align: right; overflow-x: hidden; }
 

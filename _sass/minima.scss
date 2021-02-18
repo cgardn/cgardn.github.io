@@ -100,7 +100,7 @@ $linkcolor_hover: #558aad;
 // vars
 $imagestartdelay: 0.75s;
 $imageduration:   0.75s;
-$slidetime:   1.5s;
+$slidetime:   1.0s;
 $linkduration: 0.25s;
 $linkdurspace: 0.12s;
 $linkdelay: 0.20s;
@@ -195,7 +195,7 @@ $linkdelay: 0.20s;
   color: $light_bg;
   font-size: 1.3em;
   margin: auto 3px;
-  padding: 0.5em 1.0em;
+  padding: 0.5em 0.9em;
   background-color: $linkcolor;
 }
 .landing-link:hover {

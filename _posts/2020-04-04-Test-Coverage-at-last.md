@@ -1,3 +1,9 @@
+---
+layout: post
+author: chris
+date: 2020-04-04 00:00:00 -0400
+---
+
 Spent the day working on test coverage, since I had basically none (oops \*\_\*).
 A little painful at first, but I'm getting the hang of it.  ~~Unfortunately~~ I
 got the _opportunity_ to learn a bunch of things, one of which is that I
