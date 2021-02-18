@@ -277,7 +277,7 @@ table td { border: 1px solid #e8e8e8; }
 /* -- Layout -- */
 .landing-title-layout { margin: auto 0; flex: 1 0 100%; display: flex; justify-content: center; }
 
-@media screen and (max-width: 400px) { .mobile-column { flex-direction: column; } }
+@media screen and (max-width: 500px) { .mobile-column { flex-direction: column; } }
 
 .above-fold { display: flex; flex-direction: column; }
 
@@ -339,7 +339,7 @@ table td { border: 1px solid #e8e8e8; }
 
 @media screen and (max-width: 1920px) { .summary { width: 50%; margin: 30px 28%; } }
 
-@media screen and (max-width: 400px) { .summary { width: 80%; margin: 10px auto; } }
+@media screen and (max-width: 500px) { .summary { width: 80%; margin: 10px auto; } }
 
 .summary { opacity: 0; animation-name: heroimageanim; animation-delay: 1s; animation-duration: 0.25s; animation-fill-mode: forwards; }
 
@@ -351,7 +351,7 @@ table td { border: 1px solid #e8e8e8; }
 
 .landing-right { flex: 1 0 50%; overflow-x: hidden; }
 
-@media screen and (max-width: 400px) { .landing-left, .landing-right { text-align: center; } }
+@media screen and (max-width: 500px) { .landing-left, .landing-right { text-align: center; } }
 
 .landing-divider { flex: 0 0 1%; text-align: center; }
 
