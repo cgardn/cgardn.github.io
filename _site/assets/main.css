@@ -337,7 +337,7 @@ table td { border: 1px solid #e8e8e8; }
 
 .summary-wrap { flex: 1 0 80%; margin: 20px auto; text-align: justify; }
 
-@media screen and (max-width: 1920px) { .summary { width: 50%; margin: 30px 28%; } }
+@media screen and (max-width: 1920px) { .summary { width: 50%; margin: 30px auto; } }
 
 @media screen and (max-width: 500px) { .summary { width: 80%; margin: 10px auto; } }
 

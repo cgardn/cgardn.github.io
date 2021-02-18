@@ -218,7 +218,7 @@ $linkdelay: 0.20s;
 @include media-query($on-desktop) {
   .summary {
     width: 50%;
-    margin: 30px 28%;
+    margin: 30px auto;
   }
 }
 @include media-query($on-phone) {
