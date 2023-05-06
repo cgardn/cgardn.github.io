@@ -1,8 +1,3 @@
----
-layout: default
-permalink: /projects/
----
-
 ## Big Projects
 
 **[Hyperchef](https://cgardn.github.io/hyperchef/)**  
