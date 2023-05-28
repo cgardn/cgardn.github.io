@@ -8,7 +8,7 @@ date: 2023-05-28 00:00:00 -0400
 
 I'm taking down the Hyperchef backend to re-use those resources
 for other stuff. I'll leave the site up because it's hosted for free on GH, but
-don't expect to work for a while. I'd like to come back and rewrite it all 
+don't expect it to work for a while. I'd like to come back and rewrite it all 
 since it was the first Big Thing I made, but there's too many other things
 on my plate now so maybe later.
 
