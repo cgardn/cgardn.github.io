@@ -1,0 +1,23 @@
+new personal site
+
+- one page
+	- bio
+	- projects
+	- contact
+- desktop
+	- 3 section buttons toggle slide/fade content into left panel
+	
+- mobile
+	- hamburger menu with 3 section buttons, same slide/fade transition on content but now mobile
+		- menu also has the light/dark theme switcher
+
+- vaguely sci-fi design, animations on some accent lines around edges of boxes (only 2 sides, i.e. sci-fi UI) on transitions
+- hover transitions on buttons
+- something subtle that draws attention somewhere, like a subtle animation of the linkedin logo when hovering last resume paragraph or something
+	
+nice to haves for showing off skills
+- dark/light theme switcher
+- colorblind options
+- accessibility mode
+
+	

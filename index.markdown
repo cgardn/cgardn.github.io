@@ -1,4 +1,55 @@
----
-layout: home
----
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
+  {%- include head.html -%}
+
+  <body class="light-bg">
+
+    <main class="page-content" aria-label="Content">
+		<div class="above-fold">
+
+		  <img src="/assets/headshot_circle_web.png" class="headshot-image"></img>
+		  <div class="landing-title-style landing-title-layout mobile-column">
+			<div class="landing-left">
+			  <div class="animate-left">
+				Chris Gardner
+			  </div>
+			</div>
+			<div class="landing-right">
+			  <div class="animate-right">
+				Web Developer
+			  </div>
+			</div>
+		  </div>
+		  <div class="summary-wrap">
+			
+			<p class="summary">Hello! I'm Chris, a web developer, former biomedical engineer, and attempted novelist. <a href="https://bluefoxfilms.co/secondshooting" target="_blank">I also take pictures!</a>
+
+			Presently, I am a frontend developer in eCommerce. I'm fluent in native JS, modern frameworks (Vue, React, Node, Rails) dev tooling (SASS, webpack, etc), databases (postgresql, mysql, sqlite), and design tools (Photoshop, Illustrator, Figma, etc).
+			</p>
+			<p class="summary">
+			I'm also familiar with Python, basic data science/BI processes and concepts, somewhat competent in a couple game engines, below-average at the piano, and cook a mean coq au vin.
+			</p>
+		  </div>
+		  <div class="landing-link-layout">
+			  <a href="/about"    class="link-anim la-1 landing-link">About</a>
+			  <a href="/blog"     class="link-anim la-2 landing-link">Blog</a>
+		  </div>
+		  <div class="landing-link-layout">
+			<a href="https://www.github.com/cgardn" target="_blank" class="link-anim la-6">
+			  <span class="material-icons md-32">
+				<img src="/assets/GitHub-Mark-32px.png" width="26px">
+			  </span>
+			</a>
+			<a href="https://www.linkedin.com/in/christopher-a-gardner" target="_blank" class="link-anim la-7">
+			  <span class="material-icons md-32 linkedin">
+				<img src="/assets/LI-In-Bug.png" width="28px">
+			  </span>
+			</a>
+		  </div>
+		</div>
+    </main>
+
+  </body>
+
+</html>
