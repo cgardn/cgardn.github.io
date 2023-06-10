@@ -20,6 +20,13 @@ main {
 	width: 100%;
 	height: 90vh;
 	display: flex;
+	flex-wrap: wrap;
+}
+main pre {
+	font-size: 3px;
+	padding-top: 2%;
+	margin-left: 14%;
+	margin-right: auto;
 }
 .no-mobile {
 	display: none;
@@ -46,7 +53,7 @@ main {
 }
 .menu-item {
 	cursor: pointer;
-	margin-left: 10%;
+	margin-left: 25%;
 }
 .mobile-menu {
 	background: var(--background);
@@ -64,6 +71,9 @@ main {
 	header {
 		display: none;
 	}
+	main pre {
+		margin-left: 45%;
+	}
 	.no-mobile {
 		display: block;
 	}
@@ -71,11 +81,15 @@ main {
 		display: none;
 	}
 	.content-container, .desktop-menu {
-		margin-top: 21%
+		margin-top: 0;
 	}
 	.content-container {
 		margin-left: 15%;
-		margin-right: 15%;
+		max-width: 50%;
+		margin-top: 50px;
+	}
+	.desktop-menu {
+		max-width: 33%;
 	}
 }
 
