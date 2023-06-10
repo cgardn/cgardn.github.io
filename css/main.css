@@ -18,7 +18,7 @@ header {
 
 main {
 	width: 100%;
-	height: 100vh;
+	height: 90vh;
 	display: flex;
 }
 .no-mobile {
@@ -32,13 +32,21 @@ main {
 .content-container .content {
 	flex: 1 0 100%;
 	width: 100%;
-	transition: transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out, opacity 0.1s linear;
+	opacity: 0;
+}
+.content.active {
+	opacity: 1;
 }
 .desktop-menu {
 	flex: 1 1 33%;
 }
+.menu-item:first-of-type {
+	margin-top: 50px;
+}
 .menu-item {
 	cursor: pointer;
+	margin-left: 10%;
 }
 .mobile-menu {
 	background: var(--background);
@@ -46,9 +54,11 @@ main {
 	top: 0;
 	transform: translateX(-130%);
 	transition: transform 0.3s ease-in-out;
+	height: 100vh;
+	width: 50%;
 }
 .mobile-menu.active {
-	transform: translateX(0%);
+	transform: translateX(-4%);
 }
 @media screen and (min-width: 768px) {
 	header {

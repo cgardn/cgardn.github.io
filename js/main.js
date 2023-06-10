@@ -29,7 +29,11 @@ menus.forEach(menu => {
 		menu.addEventListener("click", (e) => {
 			if (e.target.classList.contains('menu-item') && Object.keys(e.target.dataset).includes('slide')) {
 				const slideTargets = document.querySelectorAll('.content-container .content')
-				slideTargets.forEach(el => el.style.transform = `translateX(-${Number(e.target.dataset.slide)*100}%`)
+				slideTargets.forEach(el => {
+					el.style.transform = `translateX(-${Number(e.target.dataset.slide)*100}%`
+					if (el.dataset.slide == e.target.dataset.slide) { el.classList.add("active") }
+					else el.classList.remove("active")
+				})
 			}
 		})
 	}
