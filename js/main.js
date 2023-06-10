@@ -5,10 +5,16 @@
 const mobileMenu = document.getElementById("mobile-menu");
 const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
 const mainContent = document.querySelector("main");
+const portrait = document.querySelector(".portrait");
 
 function toggleMobileMenu() {
 	if (mobileMenu) {
 		mobileMenu.classList.toggle("active")
+	}
+}
+function togglePortrait() {
+	if (portrait) {
+		portrait.classList.toggle("active");
 	}
 }
 

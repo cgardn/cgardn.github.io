@@ -1,5 +1,20 @@
 new personal site
 
+
+TODOs
+- replace burger icon with SVG
+- replace name title with animated fancy svg
+- dark/light mode
+- set to dark mode initially
+- toggle for light/dark mode
+- contact form
+- add resume
+- add portfolio page w/ link to O/S page and hyperchef w/ disclaimer
+- rewrite bio?
+- add content and menu border animations + hover states
+- animate portrait
+- shrink portrait on mobile?
+
 - one page
 	- bio
 	- projects

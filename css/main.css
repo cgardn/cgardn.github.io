@@ -1,19 +1,27 @@
 /* vars */
 :root {
 	--light-background: white;
-	--dark-background: darkgrey;
+	--dark-background: #222;
 	--light-font: darkgrey;
 	--dark-font: lightgrey;
-	--background: var(--light-background);
-	--font-color: var(--light-font);
+	
+	--background: var(--dark-background);
+	--font-color: var(--dark-font);
 }
 
 body {
 	display: flex;
 	flex-wrap: wrap;
+	background: var(--background);
+	color: var(--font-color);
 }
 header {
 	flex: 1 0 100%;
+}
+h1 {
+	flex: 1 0 100%;
+	margin: 0;
+	text-align: center;
 }
 
 main {
@@ -27,6 +35,12 @@ main pre {
 	padding-top: 2%;
 	margin-left: 14%;
 	margin-right: auto;
+	height: 300px;
+	transition: height 0.3s linear, transform 0.3s linear;
+}
+main pre.active {
+	height: 0;
+	transform: scale3d(1,0,1);
 }
 .no-mobile {
 	display: none;
@@ -47,9 +61,6 @@ main pre {
 }
 .desktop-menu {
 	flex: 1 1 33%;
-}
-.menu-item:first-of-type {
-	margin-top: 50px;
 }
 .menu-item {
 	cursor: pointer;
@@ -72,7 +83,10 @@ main pre {
 		display: none;
 	}
 	main pre {
-		margin-left: 45%;
+		margin-left: 43%;
+	}
+	main pre.active {
+		height: 0;
 	}
 	.no-mobile {
 		display: block;
@@ -86,7 +100,6 @@ main pre {
 	.content-container {
 		margin-left: 15%;
 		max-width: 50%;
-		margin-top: 50px;
 	}
 	.desktop-menu {
 		max-width: 33%;
