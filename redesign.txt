@@ -12,7 +12,9 @@ TODOs
 - add portfolio page w/ link to O/S page and hyperchef w/ disclaimer
 - rewrite bio?
 - add content and menu border animations + hover states
-- animate portrait
+- animate portrait up when changing off Bio slide
+	- manage height of slides so that the content block isn't huge from resume section, so animating away the portrait and name title gives the room
+	  for the resume
 - shrink portrait on mobile?
 
 - one page
