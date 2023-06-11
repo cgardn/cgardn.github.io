@@ -20,7 +20,7 @@ header {
 }
 h1 {
 	flex: 1 0 100%;
-	margin: 0;
+	margin: 50px 0;
 	text-align: center;
 }
 
@@ -36,11 +36,6 @@ main pre {
 	margin-left: 14%;
 	margin-right: auto;
 	height: 300px;
-	transition: height 0.3s linear, transform 0.3s linear;
-}
-main pre.active {
-	height: 0;
-	transform: scale3d(1,0,1);
 }
 .no-mobile {
 	display: none;
@@ -83,7 +78,7 @@ main pre.active {
 		display: none;
 	}
 	main pre {
-		margin-left: 43%;
+		margin-left: 37%;
 	}
 	main pre.active {
 		height: 0;
@@ -98,11 +93,17 @@ main pre.active {
 		margin-top: 0;
 	}
 	.content-container {
-		margin-left: 15%;
+		margin-left: 21%;
 		max-width: 50%;
 	}
 	.desktop-menu {
-		max-width: 33%;
+		max-width: 25%;
+		margin-left: auto;
+		padding-top: 19%;
+		transition: padding-top 0.3s ease-out;
+	}
+	.desktop-menu.active {
+		padding-top: 0px;
 	}
 }
 
