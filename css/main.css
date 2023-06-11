@@ -102,8 +102,5 @@ main pre {
 		padding-top: 19%;
 		transition: padding-top 0.3s ease-out;
 	}
-	.desktop-menu.active {
-		padding-top: 0px;
-	}
 }
 

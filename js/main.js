@@ -4,7 +4,6 @@
 // elements
 const mobileMenu = document.getElementById("mobile-menu");
 const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
-const desktopMenu = document.getElementById("desktop-menu");
 const mainContent = document.querySelector("main");
 const portrait = document.querySelector(".portrait");
 
@@ -41,8 +40,6 @@ menus.forEach(menu => {
 					if (el.dataset.slide == e.target.dataset.slide) { el.classList.add("active") }
 					else el.classList.remove("active")
 				})
-				if (e.target.dataset.slide !== '0') { desktopMenu.classList.add('active') }
-				else { desktopMenu.classList.remove('active') }
 			}
 		})
 	}
