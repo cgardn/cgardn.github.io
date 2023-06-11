@@ -4,9 +4,12 @@
 	--dark-background: #222;
 	--light-font: darkgrey;
 	--dark-font: lightgrey;
+	--menu-border-color-dark: lightgreen;
+	--menu-border-color-light: darkgreen;
 	
 	--background: var(--dark-background);
 	--font-color: var(--dark-font);
+	--menu-border-color: var(--menu-border-color-dark);
 }
 
 body {
@@ -92,15 +95,26 @@ main pre {
 	.content-container, .desktop-menu {
 		margin-top: 0;
 	}
+	.menu-item {
+		margin-left: 0;
+	}
+	.menu-item:first-of-type {
+		margin-top: 0;
+	}
+	.menu-item:last-of-type {
+		margin-bottom: 0;
+	}
 	.content-container {
 		margin-left: 21%;
 		max-width: 50%;
 	}
 	.desktop-menu {
-		max-width: 25%;
-		margin-left: auto;
-		padding-top: 19%;
-		transition: padding-top 0.3s ease-out;
+		border: 2px solid var(--menu-border-color);
+		padding: 2rem 0 2rem 2rem;
+		margin-left: 120px;
+		max-width: 290px;
+		height: fit-content;
+		margin-top: 21%;
 	}
 }
 
