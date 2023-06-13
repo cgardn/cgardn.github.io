@@ -16,7 +16,9 @@ TODOs
 	- manage height of slides so that the content block isn't huge from resume section, so animating away the portrait and name title gives the room
 	  for the resume
 - shrink portrait on mobile?
+- add an extra display: none class, put it on everything that depends on JS like the light-mode switcher, then onload just remove it
 
+---
 - one page
 	- bio
 	- projects

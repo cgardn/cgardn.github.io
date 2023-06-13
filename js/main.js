@@ -36,9 +36,16 @@ menus.forEach(menu => {
 			if (e.target.classList.contains('menu-item') && Object.keys(e.target.dataset).includes('slide')) {
 				const slideTargets = document.querySelectorAll('.content-container .content')
 				slideTargets.forEach(el => {
-					el.style.transform = `translateX(-${Number(e.target.dataset.slide)*100}%`
-					if (el.dataset.slide == e.target.dataset.slide) { el.classList.add("active") }
-					else el.classList.remove("active")
+					el.classList.remove("active")
+					el.classList.add("inactive")
+					setTimeout( () => {
+						// this movement should only be happening when all slides are opacity 0
+						el.style.transform = `translateX(-${Number(e.target.dataset.slide)*100}%`
+					}, 300) // make sure this matches the CSS animation timing for content-in and content-out, later get from JS CSSKeyframesRule interface when remote hosted (cors blocks js access of stylesheets)
+					setTimeout( () => {
+						el.classList.add("active")
+						el.classList.remove("inactive")
+					}, 300)
 				})
 			}
 		})
