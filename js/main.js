@@ -33,9 +33,13 @@ const menus = [document.getElementById("desktop-menu"), document.getElementById(
 menus.forEach(menu => {
 	if (menu) {
 		menu.addEventListener("click", (e) => {
+			const currentSlide = document.querySelector('[data-current-slide="true"]');
+			if (e.target.dataset.slide == currentSlide.dataset.slide) { return }
 			if (e.target.classList.contains('menu-item') && Object.keys(e.target.dataset).includes('slide')) {
 				const slideTargets = document.querySelectorAll('.content-container .content')
 				slideTargets.forEach(el => {
+					if (el.dataset.slide == e.target.dataset.slide) { el.dataset.currentSlide = 'true' }
+					else { el.dataset.currentSlide = 'false' }
 					el.classList.remove("active")
 					el.classList.add("inactive")
 					setTimeout( () => {
