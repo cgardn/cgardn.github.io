@@ -17,6 +17,14 @@ TODOs
 	  for the resume
 - shrink portrait on mobile?
 - add an extra display: none class, put it on everything that depends on JS like the light-mode switcher, then onload just remove it
+- figure out how to animate down 10px on content-out, and from right 10px on content-in
+	-- problem: since the slides are flex-positioned, their "resting" position is off-screen to the right. therefore any transitions or animations
+				that specify a small move like `transform: translateY(10px)` (the content-out movement) is interpreted as a move from "resting" to that, so any slide other
+				than the first shoots off to the right in order to reach 10px below the resting state. however, the amount that movement needs to be adjusted in order to look
+				good depends on what slide it is, as the 2nd slide needs to essentially needs a content-out move of `transform: translateX(-100%) translateY(10px)`, slide 3 needs
+				`transform: translateX(-200%) translateY(10px)`, and so on. this could theoretically be done with a new keyframe for each slide, but that seems excessive.
+				- a related problem is that while stylesheets can be accessed with JS and @keyframe rules can also be edited with JS, that is blocked by CORS so I can't do it on local
+				dev. :(
 
 ---
 - one page
