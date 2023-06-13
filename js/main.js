@@ -6,6 +6,7 @@ const mobileMenu = document.getElementById("mobile-menu");
 const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
 const mainContent = document.querySelector("main");
 const portrait = document.querySelector(".portrait");
+const desktopMenuItems = document.querySelectorAll('.desktop-menu .menu-item')
 
 function toggleMobileMenu() {
 	if (mobileMenu) {
@@ -54,4 +55,15 @@ menus.forEach(menu => {
 			}
 		})
 	}
+})
+
+// animate desktop menu items
+window.addEventListener("load", () => {
+	desktopMenuItems.forEach( (item, idx) => {
+		setTimeout( () => {
+			console.log("flickering in ", item)
+			item.classList.remove('start-hidden')
+			item.classList.add('flicker-in')
+		}, idx*250) // multiplier doesn't necessarily need to match the var '--flicker-timing', if you want them to overlap a bit
+	})
 })
