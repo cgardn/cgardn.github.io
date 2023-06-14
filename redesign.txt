@@ -3,18 +3,21 @@ new personal site
 
 TODOs
 - replace burger icon with SVG
-- replace name title with animated fancy svg
-- dark/light mode
-- set to dark mode initially
-- toggle for light/dark mode
-- contact form
-- add resume
++ replace portrait name title with animated fancy svg or at least big 'outline' text svg with my name
+	- basic replacement with name, but it's too big - i underestimated how large the name would be at the letter size I envisioned
+		- also mobile needs fixing
+	- offset to left, content in middle-bottom-left, menu on middle-bottom-right, upper-right has detail/subtitle info/fancy panel with some kind of animation or local conditions or something
+- svg background
+- change to nice sans-serif font
+	- ubuntu,  noto sans, raleway, nunito sans
+- dark/light mode toggle
+- contact form, connect to sendgrid
+- put github + linkedin links below contact form (or above?)
 - add portfolio page w/ link to O/S page and hyperchef w/ disclaimer
 - rewrite bio?
 - add content and menu border animations + hover states
-- animate portrait up when changing off Bio slide
-	- manage height of slides so that the content block isn't huge from resume section, so animating away the portrait and name title gives the room
-	  for the resume
+	- based on ui examples, semi-transparent grey boxes with thin opaque/brighter grey borders
+	- animate slide open/closed for changing pages (shrink boxes to the left)
 - shrink portrait on mobile?
 - add an extra display: none class, put it on everything that depends on JS like the light-mode switcher, then onload just remove it
 - figure out how to animate down 10px on content-out, and from right 10px on content-in

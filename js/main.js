@@ -61,7 +61,6 @@ menus.forEach(menu => {
 window.addEventListener("load", () => {
 	desktopMenuItems.forEach( (item, idx) => {
 		setTimeout( () => {
-			console.log("flickering in ", item)
 			item.classList.remove('start-hidden')
 			item.classList.add('flicker-in')
 		}, idx*250) // multiplier doesn't necessarily need to match the var '--flicker-timing', if you want them to overlap a bit
