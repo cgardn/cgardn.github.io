@@ -2,14 +2,15 @@ new personal site
 
 
 TODOs
+- fix link styling for dark mode (and light mode probably too, don't want default blue and purple)
 - replace burger icon with SVG
 + replace portrait name title with animated fancy svg or at least big 'outline' text svg with my name
 	- basic replacement with name, but it's too big - i underestimated how large the name would be at the letter size I envisioned
 		- also mobile needs fixing
 	- offset to left, content in middle-bottom-left, menu on middle-bottom-right, upper-right has detail/subtitle info/fancy panel with some kind of animation or local conditions or something
 - svg background
-- change to nice sans-serif font
-	- ubuntu,  noto sans, raleway, nunito sans
++ change to nice sans-serif font
+	- ubuntu, sans-serif
 - dark/light mode toggle
 - contact form, connect to sendgrid
 - put github + linkedin links below contact form (or above?)
