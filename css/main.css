@@ -4,8 +4,8 @@
 	--dark-background: #222;
 	--light-font: darkgrey;
 	--dark-font: lightgrey;
-	--menu-border-color-dark: lightgreen;
-	--menu-border-color-light: darkgreen;
+	--menu-border-color-dark: grey;
+	--menu-border-color-light: darkgrey;
 	
 	--background: var(--dark-background);
 	--font-color: var(--dark-font);
@@ -69,6 +69,9 @@ body {
 	color: var(--font-color);
 	font-family: Ubuntu, sans-serif;
 }
+main {
+	margin: 0 5%;
+}
 header {
 	flex: 1 0 100%;
 }
@@ -123,7 +126,7 @@ main pre {
 	animation-fill-mode: forwards;
 }
 .desktop-menu {
-	flex: 1 1 33%;
+	flex: 1 1 0%;
 }
 .menu-item {
 	cursor: pointer;
@@ -166,8 +169,11 @@ main pre {
 	svg.title {
 		padding-left: 30px;
 	}
-	main pre {
-		margin-left: 37%;
+	div .summary {
+		font-size: 1.5rem;
+	}
+	div .summary:first-of-type {
+		margin-top: 10%;
 	}
 	main pre.active {
 		height: 0;
@@ -191,16 +197,13 @@ main pre {
 		margin-bottom: 0;
 	}
 	.content-container {
-		margin-left: 10%;
 		max-width: 70%;
 	}
 	.desktop-menu {
 		border: 2px solid var(--menu-border-color);
 		padding: 2rem 0 2rem 2rem;
-		margin-left: 120px;
-		max-width: 290px;
 		height: fit-content;
-		margin-top: 21%;
+		margin: 20% 7%;
 	}
 }
 
