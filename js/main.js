@@ -34,6 +34,15 @@ const menus = [document.getElementById("desktop-menu"), document.getElementById(
 menus.forEach(menu => {
 	if (menu) {
 		menu.addEventListener("click", (e) => {
+			e.preventDefault()
+			console.log(e)
+			document.querySelectorAll('.fade-slide-in').forEach(el => {
+				el.classList.add('fade-slide-out');
+			})
+			setTimeout(() => {window.location.href = e.target.parentElement.href}, 350)
+			
+		})
+		/*
 			const currentSlide = document.querySelector('[data-current-slide="true"]');
 			if (e.target.dataset.slide == currentSlide.dataset.slide) { return }
 			if (e.target.classList.contains('menu-item') && Object.keys(e.target.dataset).includes('slide')) {
@@ -53,16 +62,6 @@ menus.forEach(menu => {
 					}, 300)
 				})
 			}
-		})
+		})*/
 	}
-})
-
-// animate desktop menu items
-window.addEventListener("load", () => {
-	desktopMenuItems.forEach( (item, idx) => {
-		setTimeout( () => {
-			item.classList.remove('start-hidden')
-			item.classList.add('flicker-in')
-		}, idx*250) // multiplier doesn't necessarily need to match the var '--flicker-timing', if you want them to overlap a bit
-	})
 })

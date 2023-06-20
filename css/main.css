@@ -21,13 +21,31 @@
 	0% {
 		opacity: 1;
 	}
+	25% {
+		opacity: 90%;
+		transform: translateY(2px);
+	}
+	50% {
+		opacity: 60%;
+		transform: translateY(8px);
+	}
 	100% {
 		opacity: 0;
+		transform: translateY(20px);
 	}
 }
 @keyframes content-in {
 	0% {
 		opacity: 0;
+		transform: translateY(20px);
+	}
+	50% {
+		opacity: 60%;
+		transform: translateY(8px);
+	}
+	75% {
+		opacity: 90%;
+		transform: translateY(2px);
 	}
 	100% {
 		opacity: 1;
@@ -69,10 +87,6 @@ body {
 	color: var(--font-color);
 	font-family: Ubuntu, sans-serif;
 }
-main {
-	display: flex;
-	flex-wrap: wrap;
-}
 header {
 	flex: 1 0 100%;
 }
@@ -93,20 +107,11 @@ h1 {
 }
 
 main {
-	width: 100%;
+	width: 100vw;
 	height: 90vh;
 	display: flex;
 	flex-wrap: wrap;
-}
-main pre {
-	font-size: 3px;
-	padding-top: 2%;
-	margin-left: 14%;
-	margin-right: auto;
-	height: 300px;
-}
-.start-hidden {
-	opacity: 0;
+	justify-content: center;
 }
 .no-mobile {
 	display: none;
@@ -114,11 +119,18 @@ main pre {
 .content-container {
 	display: flex;
 	overflow: hidden;
+	max-width: 1100px;
+	font-size: 17px;
 }
 .content-container .content {
-	flex: 1 0 100%;
-	width: 100%;
-	margin-right: 1px;
+}
+.fade-slide-in {
+	animation: 500ms ease-in-out content-in;
+	animation-fill-mode: forwards;
+}
+.fade-slide-out {
+	animation: 300ms ease-out content-out;
+	animation-fill-mode: forwards;
 }
 .content.active {
 	animation: 300ms ease-in content-in;
@@ -130,11 +142,17 @@ main pre {
 	animation-fill-mode: forwards;
 }
 .desktop-menu {
-	flex: 1 1 0%;
+	flex: 0 1 500px;
+	min-width: 200px;
+	max-width: 550px;
+}
+.menu a {
+	text-decoration: none;
 }
 .menu-item {
 	cursor: pointer;
 	margin-left: 25px;
+	color: var(--font-color);
 }
 .mobile-menu {
 	background: var(--background);
@@ -167,9 +185,6 @@ main pre {
 }
 
 @media screen and (min-width: 768px) {
-	main {
-		margin: 0 5%;
-	}
 	header {
 		display: none;
 	}
@@ -179,7 +194,7 @@ main pre {
 		padding: 20px 20px;
 	}
 	div .summary {
-		font-size: 1.5rem;
+		font-size: 17px;
 	}
 	div .summary:first-of-type {
 		margin-top: 10%;
@@ -206,13 +221,14 @@ main pre {
 		margin-bottom: 0;
 	}
 	.content-container {
-		max-width: 70%;
+		display: flex;
+		align-items: center;
+		gap: 40px;
 	}
 	.desktop-menu {
 		border: 2px solid var(--menu-border-color);
 		padding: 2rem 0 2rem 2rem;
 		height: fit-content;
-		margin: 7% 7%;
 	}
 }
 

@@ -23,14 +23,12 @@
 		<img id="mobile-menu-toggle" src="assets/burger.png" width="32" height="32" />
 	</header>
     <main aria-label="Content">
-		<svg class="title" id="name-title" viewBox="0 0 210 100">
-			<text x="0" y="45" stroke="rgba(200,200,200,1)" fill="rgba(80,80,80,0.3)" stroke-width="0.8px">Chris</text>
-			<text x="0" y="90" stroke="rgba(200,200,200,1)" fill="rgba(30,30,30,0.3)" stroke-width="0.3px">Gardner</text>
-		</svg>
 		<div class="content-container">
-
-			<div class="content active" data-slide="0" data-current-slide="true">
-
+			<div class="content fade-slide-in">
+				<svg class="title" id="name-title" viewBox="0 0 210 100">
+					<text x="0" y="45" stroke="rgba(200,200,200,1)" fill="rgba(80,80,80,0.3)" stroke-width="0.8px">Chris</text>
+					<text x="0" y="90" stroke="rgba(200,200,200,1)" fill="rgba(30,30,30,0.3)" stroke-width="0.3px">Gardner</text>
+				</svg>
 				<div>
 				<p class="summary">
 					Hello! I'm Chris, a web developer, former biomedical engineer, and attempted novelist. <a href="https://bluefoxfilms.co/secondshooting" target="_blank">I also take pictures!</a>
@@ -41,107 +39,26 @@
 				</p>
 				</div>
 			</div>
-			<div class="content active" data-slide="1">
-				<h3>Professional Summary</h3>
-				<h5><a href="assets/Chris_Gardner_resume.pdf" target="_blank">Get this as a pdf</a>
-				<h4>Frontend Developer: 2020 - present</h4>
-				<p>
-				I've worked mostly in eCommerce, for my current employer <a href="https://www.luxurybrandpartners.com" target="_blank">Luxury Brand Partners</a>.
-				I develop and maintain several of our brand sites, and add smaller features to other smaller properties and marketing sites as well.
-				My focus here has been on performance, as I inherited several sites that were heavy on third-party libraries, no code-splitting, and generally not optimized for mobile (which is 80%+ of our users).
-				In my time, I've reduced bundle sizes by over 60% on multiple sites, and led internal efforts to implement a mobile-first content policy for images and videos. I've also developed several key features for our customers (bulk-ordering system on our Pro site), and multiple high-end interactive product launch experiences for various brands.
-				Stack:
-				<ul>
-					<li>HTML, CSS, SVG, SASS</li>
-					<li>native JS, VueJS, NodeJS, jQuery (when forced :) )</li>
-					<li>Webpack, Rollup</li>
-					<li>Vue Storefront, Shopify</li>
-				</ul>
-				Before my current employer, I developed an unreleased social media app in VueJS with a small team in 2020.
-				</p>
-				
-				<h4>Wedding Photographer: 2017 - 2020</h4>
-				<p>
-				Worked for my wife at her photography business, <a href="cassiclaire.com" target="_blank">Cassi Claire Photography.</a> Traveled a lot, took a lot of pictures, ate a lot of croissants and wedding dinners, and made a lot of friends and memories along the way.
-				Unfortunately, COVID put a hard stop on events for a while, which led me to web development.
-				<ul>
-					<li>Co-owned a small business</li>
-					<li>Many hats worn: high-touch customer service, bookkeeping, CRM administration, videography.</li>
-				</ul>
-				</p>
-				
-				<h4>Field Engineer</h4>
-				<p>
-				In my previous life, I was a medical field service engineer for 5 years. I installed and maintained state-of-the-art blood chemistry analyzers and associated robotic sample management systems in NYC and NJ.
-				<ul>
-					<li>Complex problem solving involving root-cause analysis, and deep knowledge of electro-mechanical-fluidic systems, plus a dash of chemistry and statistics</li>
-					<li>Also a lot of high-touch customers service in a high-pressure environment, the systems I worked on determined the path of patient care, and my accounts included world-renowned hospitals in NYC and the largest clinical chemistry facility in North America</li>
-				</ul>
-				</p>
-			</div>
-			<div class="content active" data-slide="2">
-				<h1>Portfolio</h1>
-				<div class="portfolio-item">
-					<h2>This site :)</h2>
-					<p>
-					Look at those animations, so crisp! And that typography, wow, what an inspired choice!
-					</p>
-					<p>
-					And to think, it all fits in 200kB and 50ms of load time. Incredible!
-					</p>
-					<p>
-					No frameworks you say? Amazing! What an outstanding demonstration of this developer's full command of web standards!
-					</p>
-				</div>
-				<div class="portfolio-item">
-					<h2>Hyperchef (pls be kind)</h2>
-					<p>
-					Once a dazzling display of fresh-bootcamp-grad hutzpah, it is now a sad, decommissioned, amateur attempt at a recipe organizer. Pending redesign, consider it under construction.
-					</p>
-					<p>
-					Originally built on Vue+Rails, the coming redesign will be on React+Node because reasons.
-					</p>
-				</div>
-			</div>
-			<div class="content active" data-slide="3">
-				<form>
-					<input type="text" placeholder="Name" id="contact_name">
-					<input type="email" placeholder="Email" id="contact_email">
-					<input type="text" placeholder="Organization" id="contact_organization">
-					<input type="textarea" placeholder="Reason for contacting" id="contact_message">
-					<button type="submit">Submit</button>
-				</form>
-				<div class="landing-link-layout">
-					<a href="https://www.github.com/cgardn" target="_blank" class="link-anim la-6">
-						<span class="material-icons md-32">
-							<img src="assets/GitHub-Mark-32px.png" width="26px">
-						</span>
-					</a>
-					<a href="https://www.linkedin.com/in/christopher-a-gardner" target="_blank" class="link-anim la-7">
-						<span class="material-icons md-32 linkedin">
-							<img src="assets/LI-In-Bug.png" width="28px">
-						</span>
-					</a>
-				</div>
+			<div class="desktop-menu no-mobile menu fade-slide-in" id="desktop-menu">
+				<a href="/resume.html"><h2 class="menu-item">Resume</h2></a>
+				<a href="/portfolio.html"><h2 class="menu-item">Portfolio</h2></a>
+				<a href="/contact.html"><h2 class="menu-item">Contact</h2></a>
+				<!-- put this in settings somewhere when I get to that part
+				<h2 class="menu-item start-hidden">
+					<span class="settings-item">Light Theme toggle</span>
+				</h2>
+				-->
 			</div>
 		</div>
-		<div class="mobile-menu no-desktop" id="mobile-menu">
-			<h3 class="menu-item" data-slide="0">Bio</h3>
-			<h3 class="menu-item" data-slide="1">Resume</h3>
-			<h3 class="menu-item" data-slide="2">Portfolio</h3>
-			<h3 class="menu-item" data-slide="3">Contact</h3>
+
+		</div>
+		<div class="mobile-menu no-desktop menu" id="mobile-menu">
+			<h3 class="menu-item" data-nav-main>Resume</h3>
+			<h3 class="menu-item" data-nav-main>Portfolio</h3>
+			<h3 class="menu-item" data-nav-main>Contact</h3>
 			<div class="menu-item">
 				<span class="settings-item">Light Theme toggle</div>
 			</div>
-		</div>
-		<div class="desktop-menu no-mobile" id="desktop-menu">
-			<h2 class="menu-item start-hidden" data-slide="0">Bio</h2>
-			<h2 class="menu-item start-hidden" data-slide="1">Resume</h2>
-			<h2 class="menu-item start-hidden" data-slide="2">Portfolio</h2>
-			<h2 class="menu-item start-hidden" data-slide="3">Contact</h2>
-			<h2 class="menu-item start-hidden">
-				<span class="settings-item">Light Theme toggle</span>
-			</h2>
 		</div>
 	</main>
   </body>

@@ -1,5 +1,23 @@
 new personal site
 
+final concept
+- main page is just hero with nameplate and subtitle, right-side displays menu
+- animate out with the down-transform + opacity fade, then navigate with JS, and animate in with up-transform + fade on each pageload. should look seamless with pagechange
+- non-homepage nav is at top or burger
+	- bio
+	- resume
+	- portfolio
+	- blog (when ready, add shopify posts first)
+	- contact
+order of action items:
+- layout with no animations
+- JS nav
+- animations for page transition
+- connect contact page to sendgrid/twilio functions
+- launch
+- blog
+- "fancy" homepage animations and also navbar (svg or whatever to get the lines to animate as a path)
+
 
 TODOs
 - fix link styling for dark mode (and light mode probably too, don't want default blue and purple)
