@@ -4,6 +4,10 @@
 	--dark-background: #222;
 	--light-font: darkgrey;
 	--dark-font: lightgrey;
+	--dark-link: rgb(137, 188, 250);
+	--dark-link-visited: rgb(187, 125, 245);
+	--light-link: rgb(3, 116, 255);
+	--light-link-visited: rgb(153, 54, 245);
 	--menu-border-color-dark: grey;
 	--menu-border-color-light: darkgrey;
 	
@@ -87,17 +91,25 @@ body {
 	color: var(--font-color);
 	font-family: Ubuntu, sans-serif;
 }
+a {
+	color: var(--dark-link);
+	text-decoration: none;
+}
+a:visited {
+	color: var(--dark-link-visited);
+}
 header {
 	flex: 1 0 100%;
+}
+header img {
+	filter: invert(1);
 }
 svg.title {
 	font-family: Orbit, monospace;
 	font-size: 3rem;
 	height: 200px;
 	width: 100%;
-	padding: 0px 20px;
 	margin: 0;
-	border: 1px solid grey;
 }
 h1 {
 	flex: 1 0 100%;
@@ -123,21 +135,13 @@ main {
 	font-size: 17px;
 }
 .content-container .content {
+	padding: 10px;
 }
 .fade-slide-in {
 	animation: 500ms ease-in-out content-in;
 	animation-fill-mode: forwards;
 }
 .fade-slide-out {
-	animation: 300ms ease-out content-out;
-	animation-fill-mode: forwards;
-}
-.content.active {
-	animation: 300ms ease-in content-in;
-	animation-fill-mode: forwards;
-	opacity: 0;
-}
-.content.inactive {
 	animation: 300ms ease-out content-out;
 	animation-fill-mode: forwards;
 }
@@ -148,6 +152,11 @@ main {
 }
 .menu a {
 	text-decoration: none;
+	margin-top: 30px;
+	display: block;
+}
+.menu a:first-of-type {
+	margin-top: 60px;
 }
 .menu-item {
 	cursor: pointer;
@@ -159,11 +168,15 @@ main {
 	position: absolute;
 	top: 0;
 	left: 0;
-	transform: translateX(-130%);
+	transform: translateX(-100%);
 	transition: transform 0.3s ease-in-out;
 	height: 100vh;
 	width: 50%;
 }
+.mobile-menu.active {
+	transform: translateX(0);
+}
+/*
 .flicker-in {
 	animation: var(--flicker-timing) steps(5, end) flicker-in;
 }
@@ -172,10 +185,6 @@ main {
 		animation: none;
 	}
 }
-.mobile-menu.active {
-	transform: translateX(-4%);
-}
-
 .zoom-blur-transition {
 	transition: transform var(--zoom-blur-timing) ease-out, filter var(--zoom-blur-timing) ease-out, opacity var(--zoom-blur-timing) ease-out;
 }
@@ -184,6 +193,7 @@ main {
 	filter: blur(5px);
 	transform: scale(0.95);
 }
+*/
 
 /* contact form - small enough that i'll just leave it on the main.css file */
 form {
@@ -197,11 +207,11 @@ form input {
 form input, form textarea {
 	margin-bottom: 20px;
 	border-radius: 5px;
+	font-family: Ubuntu, sans-serif;
 }
 form textarea {
-	padding: 5px;
+	padding: 8px 20px;
 	height: 200px;
-	
 }
 form button {
 	width: 50%;
@@ -228,22 +238,29 @@ form button {
 }
 
 @media screen and (min-width: 768px) {
+	.menu a:first-of-type {
+		margin-top: 0;
+	}
 	form {
 		width: 20vw;
 	}
-	header {
-		display: none;
-	}
 	svg.title {
-		margin: 0 50% 0 0;
-		width: 500px;
-		padding: 20px 20px;
+		width: auto;
+		height: 300px;
 	}
 	div .summary {
 		font-size: 17px;
 	}
 	div .summary:first-of-type {
 		margin-top: 10%;
+	}
+	header {
+		display: flex;
+		justify-content: center;
+	}
+	header a {
+		text-decoration: none;
+		margin: 20px 20px;
 	}
 	main pre.active {
 		height: 0;

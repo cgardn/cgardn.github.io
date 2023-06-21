@@ -10,11 +10,15 @@ final concept
 	- blog (when ready, add shopify posts first)
 	- contact
 order of action items:
-- layout with no animations
-- JS nav
-- animations for page transition
++ layout with no animations
++ JS nav
++ animations for page transition
++ fix link styling everywhere (add light/dark versions of standard link styling as variables for the theme switcher)
++ fix index nameplate svg border running off the side
+- rewrite portfolio to be about one/size, r+co, lbp Pro, elaluz
 - connect contact page to sendgrid/twilio functions
 - launch
+- light/dark theme switcher
 - blog
 - "fancy" homepage animations and also navbar (svg or whatever to get the lines to animate as a path)
 

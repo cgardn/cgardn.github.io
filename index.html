@@ -20,7 +20,7 @@
 
   <body>
 	<header>
-		<img id="mobile-menu-toggle" src="assets/burger.png" width="32" height="32" />
+		<img class="no-desktop" id="mobile-menu-toggle" src="assets/burger.png" width="32" height="32" />
 	</header>
     <main aria-label="Content">
 		<div class="content-container">
@@ -53,12 +53,14 @@
 
 		</div>
 		<div class="mobile-menu no-desktop menu" id="mobile-menu">
-			<h3 class="menu-item" data-nav-main>Resume</h3>
-			<h3 class="menu-item" data-nav-main>Portfolio</h3>
-			<h3 class="menu-item" data-nav-main>Contact</h3>
+			<a href="/resume.html"><h3 class="menu-item" data-nav-main>Resume</h3></a>
+			<a href="/portfolio.html"><h3 class="menu-item" data-nav-main>Portfolio</h3></a>
+			<a href="/contact.html"><h3 class="menu-item" data-nav-main>Contact</h3></a>
+			<!-- not ready yet
 			<div class="menu-item">
 				<span class="settings-item">Light Theme toggle</div>
 			</div>
+			-->
 		</div>
 	</main>
   </body>
