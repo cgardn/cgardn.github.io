@@ -15,7 +15,12 @@ order of action items:
 + animations for page transition
 + fix link styling everywhere (add light/dark versions of standard link styling as variables for the theme switcher)
 + fix index nameplate svg border running off the side
-- rewrite portfolio to be about one/size, r+co, lbp Pro, elaluz
++ rewrite portfolio to be about one/size, r+co, lbp Pro, elaluz
++ comment out stuff for this site until fancy animations are done
+- fix scrollbar pushing content over on portfolio page, and resume creating scrollbar when animating in/out
+	- for resume page, lock body scroll when animating in/out
+	- for portfolio, make the inner portfolio box scroll with hidden scrollbar and some kind of js indicator, and add scrollbar back with a <noscript> style tag reverting the scrollbar hide
+		- alternatively, figure out how to float the scrollbar over the body
 - connect contact page to sendgrid/twilio functions
 - launch
 - light/dark theme switcher
