@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  
+	  <link rel="preconnect" href="https://fonts.googleapis.com">
+	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	  <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+	  
+	  <link rel="stylesheet" href="css/main.css">
+	  <!-- material design icons -->
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  <script type="text/javascript" src="js/main.js" defer></script>
+	  <script type="text/javascript" src="js/contact.js" defer></script>
+	  <title>Chris Gardner</title>
+  </head>
+  <body>
+	<header>
+		<img class="no-desktop" id="mobile-menu-toggle" src="assets/burger.png" width="32" height="32" />
+		<a href="/" class="no-mobile"><h2 class="menu-item">Home</h2></a>
+		<a href="/resume.html" class="no-mobile"><h2 class="menu-item">Resume</h2></a>
+		<a href="/portfolio.html" class="no-mobile"><h2 class="menu-item">Portfolio</h2></a>
+		<a href="/contact.html" class="no-mobile"><h2 class="menu-item">Contact</h2></a>
+	</header>
+	<main>
+		<div class="content-container">
+			<div class="content fade-slide-in">
+				<h1>Contact</h1>
+				<form id="contact-form" action="https://professional-site-1662.twil.io/form" method="POST">
+					<input type="text" placeholder="Name" name="name" id="contact_name" />
+					<input type="email" placeholder="Email" name="email" id="contact_email" />
+					<input type="text" placeholder="Organization" name="company" id="contact_company" />
+					<textarea placeholder="Reason for contacting" name="message" id="contact_message"></textarea>
+					<button type="submit">Submit</button>
+				</form>
+				<div class="landing-link-layout">
+					<a href="https://www.github.com/cgardn" target="_blank" class="link-anim la-6">
+						<span class="material-icons md-32">
+							<img src="assets/GitHub-Mark-32px.png" width="34px">
+						</span>
+					</a>
+					<a href="https://www.linkedin.com/in/christopher-a-gardner" target="_blank" class="link-anim la-7">
+						<span class="material-icons md-32 linkedin">
+							<img src="assets/LI-In-Bug.png" width="40px">
+						</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="mobile-menu no-desktop menu" id="mobile-menu">
+			<a href="/"><h3 class="menu-item" data-nav-main>Home</h3></a>
+			<a href="/resume.html"><h3 class="menu-item" data-nav-main>Resume</h3></a>
+			<a href="/portfolio.html"><h3 class="menu-item" data-nav-main>Portfolio</h3></a>
+			<a href="/contact.html"><h3 class="menu-item" data-nav-main>Contact</h3></a>
+			<!-- not ready yet
+			<div class="menu-item">
+				<span class="settings-item">Light Theme toggle</div>
+			</div>
+			-->
+		</div>
+	</main>
+  </body>
+</html>

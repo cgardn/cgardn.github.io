@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  
+	  <link rel="preconnect" href="https://fonts.googleapis.com">
+	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	  <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+	  
+	  <link rel="stylesheet" href="css/main.css">
+	  <!-- material design icons -->
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  <script type="text/javascript" src="js/main.js" defer></script>
+	  <title>Chris Gardner</title>
+  </head>
+  <body>
+ 	<header>
+		<img class="no-desktop" id="mobile-menu-toggle" src="assets/burger.png" width="32" height="32" />
+		<a href="/" class="no-mobile"><h2 class="menu-item">Home</h2></a>
+		<a href="/resume.html" class="no-mobile"><h2 class="menu-item">Resume</h2></a>
+		<a href="/portfolio.html" class="no-mobile"><h2 class="menu-item">Portfolio</h2></a>
+		<a href="/contact.html" class="no-mobile"><h2 class="menu-item">Contact</h2></a>
+	</header>
+	<main>
+		<div class="content-container">
+			<div class="content fade-slide-in">
+				<h1>Portfolio</h1>
+				<div class="portfolio-item">
+					<h2><a href="https://www.onesizebeauty.com" target="_blank">ONE/SIZE</a></h2>
+					<p>
+					Although I work on many brand sites and various other projects, the ONE/SIZE website is where I've invested most of my effort. I didn't do the initial build, 
+					but over the last 2 years I've brought the site from over 1.5 MB of JS bundle down to less than 200kB compressed and minified. At this point, most of what you see has been either refactored or 
+					completely rebuilt by me at some point.
+					
+					
+					</p>
+					<p>
+					Most of the gains have been rewriting UI components with vanilla JS to eliminate wasteful usage of third-party libraries; one notable example was my predecessor including the entire GSAP
+					library into the site bundle, but only using it for a slide carousel, which is a trivial task with CSS alone, or a little JS if you want scroll buttons.
+					</p>
+					<p>
+					Lately I've been wading into refactoring and splitting the CSS, as all of it is currently built into one gigantic file.
+					</p>
+					<p>
+					I've also led internal efforts to add file size limits to our content policy, in an attempt to keep above-the-fold images and gifs/videos to reasonable sizes for our mobile users.
+					</p>
+				</div>
+				<div class="portfolio-item">
+					<h2>Other Work</h2>
+					<p>
+					I've worked on several other properties for my company as well. Here is a brief list of the sites I've worked on to various degrees:
+					</p>
+					<ul>
+						<li><a href="https://colorgames.igkhair.com">IGK Colorgames</a></li>
+						<p>Interactive experience designed + built by me for the launch of IGK hair dye products.</p>
+						<p>Other than the card-back images, all graphics and animations were coded with vanilla SVGs and VueJS for tying it all together. The color quiz and try-on experience are not mine, though</p>
+						<li><a href="https://pro.luxbp.com">LBP Pro</a></li>
+						<p>Non-public storefront for pro customers; VueJS SPA built on Vue Storefront eCommerce framework. In addition to normal maintenance, I also built a bulk-ordering experience for our larger customers.</p>
+						<li><a href="https://www.randco.com">R+Co</a></li>
+						<p>Various small-to-medium features and bugfixes</p>
+						<li>R+Co Hairmail</li>
+						<p>Product recommendation app built with Ionic. Used by salon artists to build carts of recommended products to send to their customers, for which the artist gets affiliate credit.
+						Invitation only so I don't have a link :/ I did roughly 90% of the design and implementation.
+						</p>
+						<li><a href="https://edu.randco.com">R+Co Education</a></li>
+						<p>Jury-rigged a VueJS digital calendar with date range selection and some boolean filters into a platform that wasn't really designed for adding extra stuff</p>
+						<li><a href="https://www.elaluz.com">Elaluz</a></li>
+						<p>Similar optimization work to ONE/SIZE, though not as extensive. Also a number of features, such as recommended product carousels and a free-gift module</p>
+
+					</ul>
+				</div>
+			</div>
+			<div class="mobile-menu no-desktop menu" id="mobile-menu">
+				<a href="/"><h3 class="menu-item" data-nav-main>Home</h3></a>
+				<a href="/resume.html"><h3 class="menu-item" data-nav-main>Resume</h3></a>
+				<a href="/portfolio.html"><h3 class="menu-item" data-nav-main>Portfolio</h3></a>
+				<a href="/contact.html"><h3 class="menu-item" data-nav-main>Contact</h3></a>
+				<!-- not ready yet
+				<div class="menu-item">
+					<span class="settings-item">Light Theme toggle</div>
+				</div>
+				-->
+			</div>
+		</div>
+	</main>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  
+	  <link rel="preconnect" href="https://fonts.googleapis.com">
+	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	  <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+	  
+	  <link rel="stylesheet" href="css/main.css">
+	  <!-- material design icons -->
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  <script type="text/javascript" src="js/main.js" defer></script>
+	  <title>Chris Gardner</title>
+  </head>
+
+
+  <body>
+	<header>
+		<img class="no-desktop" id="mobile-menu-toggle" src="assets/burger.png" width="32" height="32" />
+	</header>
+    <main aria-label="Content">
+		<div class="content-container">
+			<div class="content fade-slide-in">
+				<svg class="title" id="name-title" viewBox="0 0 210 100">
+					<text x="0" y="45" stroke="rgba(200,200,200,1)" fill="rgba(80,80,80,0.3)" stroke-width="0.8px">Chris</text>
+					<text x="0" y="90" stroke="rgba(200,200,200,1)" fill="rgba(30,30,30,0.3)" stroke-width="0.3px">Gardner</text>
+				</svg>
+				<div>
+				<p class="summary">
+					Hello! I'm Chris, a web developer, former biomedical engineer, and attempted novelist. <a href="https://bluefoxfilms.co/secondshooting" target="_blank">I also take pictures!</a>
+					Presently, I am a frontend developer in eCommerce. I'm fluent in native JS, modern frameworks (Vue, React, Node, Rails) dev tooling (SASS, webpack, etc), databases (postgresql, mysql, sqlite), and design tools (Photoshop, Illustrator, Figma, etc).
+				</p>
+				<p class="summary">
+					I'm also familiar with Python, basic data science/BI processes and concepts, somewhat competent in a couple game engines, below-average at the piano, and cook a mean coq au vin.
+				</p>
+				</div>
+			</div>
+			<div class="desktop-menu no-mobile menu fade-slide-in" id="desktop-menu">
+				<a href="/resume.html"><h2 class="menu-item">Resume</h2></a>
+				<a href="/portfolio.html"><h2 class="menu-item">Portfolio</h2></a>
+				<a href="/contact.html"><h2 class="menu-item">Contact</h2></a>
+				<!-- put this in settings somewhere when I get to that part
+				<h2 class="menu-item start-hidden">
+					<span class="settings-item">Light Theme toggle</span>
+				</h2>
+				-->
+			</div>
+		</div>
+
+		</div>
+		<div class="mobile-menu no-desktop menu" id="mobile-menu">
+			<a href="/resume.html"><h3 class="menu-item" data-nav-main>Resume</h3></a>
+			<a href="/portfolio.html"><h3 class="menu-item" data-nav-main>Portfolio</h3></a>
+			<a href="/contact.html"><h3 class="menu-item" data-nav-main>Contact</h3></a>
+			<!-- not ready yet
+			<div class="menu-item">
+				<span class="settings-item">Light Theme toggle</div>
+			</div>
+			-->
+		</div>
+	</main>
+  </body>
+</html>

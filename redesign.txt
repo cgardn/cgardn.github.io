@@ -1,5 +1,63 @@
 new personal site
 
+final concept
+- main page is just hero with nameplate and subtitle, right-side displays menu
+- animate out with the down-transform + opacity fade, then navigate with JS, and animate in with up-transform + fade on each pageload. should look seamless with pagechange
+- non-homepage nav is at top or burger
+	- bio
+	- resume
+	- portfolio
+	- blog (when ready, add shopify posts first)
+	- contact
+order of action items:
++ layout with no animations
++ JS nav
++ animations for page transition
++ fix link styling everywhere (add light/dark versions of standard link styling as variables for the theme switcher)
++ fix index nameplate svg border running off the side
++ rewrite portfolio to be about one/size, r+co, lbp Pro, elaluz
++ comment out stuff for this site until fancy animations are done
+- fix scrollbar pushing content over on portfolio page, and resume creating scrollbar when animating in/out
+	- for resume page, lock body scroll when animating in/out
+	- for portfolio, make the inner portfolio box scroll with hidden scrollbar and some kind of js indicator, and add scrollbar back with a <noscript> style tag reverting the scrollbar hide
+		- alternatively, figure out how to float the scrollbar over the body
+- connect contact page to sendgrid/twilio functions
+- launch
+- light/dark theme switcher
+- blog
+- "fancy" homepage animations and also navbar (svg or whatever to get the lines to animate as a path)
+
+
+TODOs
+- fix link styling for dark mode (and light mode probably too, don't want default blue and purple)
+- replace burger icon with SVG
++ replace portrait name title with animated fancy svg or at least big 'outline' text svg with my name
+	- basic replacement with name, but it's too big - i underestimated how large the name would be at the letter size I envisioned
+		- also mobile needs fixing
+	- offset to left, content in middle-bottom-left, menu on middle-bottom-right, upper-right has detail/subtitle info/fancy panel with some kind of animation or local conditions or something
+- svg background
++ change to nice sans-serif font
+	- ubuntu, sans-serif
+- dark/light mode toggle
+- contact form, connect to sendgrid
+- put github + linkedin links below contact form (or above?)
+- add portfolio page w/ link to O/S page and hyperchef w/ disclaimer
+- rewrite bio?
+- add content and menu border animations + hover states
+	- based on ui examples, semi-transparent grey boxes with thin opaque/brighter grey borders
+	- animate slide open/closed for changing pages (shrink boxes to the left)
+- shrink portrait on mobile?
+- add an extra display: none class, put it on everything that depends on JS like the light-mode switcher, then onload just remove it
+- figure out how to animate down 10px on content-out, and from right 10px on content-in
+	-- problem: since the slides are flex-positioned, their "resting" position is off-screen to the right. therefore any transitions or animations
+				that specify a small move like `transform: translateY(10px)` (the content-out movement) is interpreted as a move from "resting" to that, so any slide other
+				than the first shoots off to the right in order to reach 10px below the resting state. however, the amount that movement needs to be adjusted in order to look
+				good depends on what slide it is, as the 2nd slide needs to essentially needs a content-out move of `transform: translateX(-100%) translateY(10px)`, slide 3 needs
+				`transform: translateX(-200%) translateY(10px)`, and so on. this could theoretically be done with a new keyframe for each slide, but that seems excessive.
+				- a related problem is that while stylesheets can be accessed with JS and @keyframe rules can also be edited with JS, that is blocked by CORS so I can't do it on local
+				dev. :(
+
+---
 - one page
 	- bio
 	- projects
