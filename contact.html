@@ -14,6 +14,7 @@
 	  <!-- material design icons -->
 	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	  <script type="text/javascript" src="js/main.js" defer></script>
+	  <script type="text/javascript" src="js/contact.js" defer></script>
 	  <title>Chris Gardner</title>
   </head>
   <body>
@@ -28,11 +29,11 @@
 		<div class="content-container">
 			<div class="content fade-slide-in">
 				<h1>Contact</h1>
-				<form>
-					<input type="text" placeholder="Name" id="contact_name" />
-					<input type="email" placeholder="Email" id="contact_email" />
-					<input type="text" placeholder="Organization" id="contact_organization" />
-					<textarea placeholder="Reason for contacting" id="contact_message"></textarea>
+				<form id="contact-form" action="https://professional-site-1662.twil.io/form" method="POST">
+					<input type="text" placeholder="Name" name="name" id="contact_name" />
+					<input type="email" placeholder="Email" name="email" id="contact_email" />
+					<input type="text" placeholder="Organization" name="company" id="contact_company" />
+					<textarea placeholder="Reason for contacting" name="message" id="contact_message"></textarea>
 					<button type="submit">Submit</button>
 				</form>
 				<div class="landing-link-layout">

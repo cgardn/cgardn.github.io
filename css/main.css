@@ -209,6 +209,10 @@ form input, form textarea {
 	border-radius: 5px;
 	font-family: Ubuntu, sans-serif;
 }
+form input:disabled, form textarea:disabled, form button:disabled {
+	background-color: #aaa;
+	color: #111;
+}
 form textarea {
 	padding: 8px 20px;
 	height: 200px;
