@@ -90,6 +90,12 @@ body {
 	background: var(--background);
 	color: var(--font-color);
 	font-family: Ubuntu, sans-serif;
+	overflow-x: hidden;
+}
+@media screen and (min-width: 768px) {
+	body {
+		width: 100vw;
+	}
 }
 a {
 	color: var(--dark-link);
@@ -196,6 +202,16 @@ main {
 */
 
 /* contact form - small enough that i'll just leave it on the main.css file */
+.post-submit-message {
+	position: absolute;
+	top: 150px;
+}
+.post-submit-message:not(.fade-slide-in) {
+	opacity: 0;
+}
+.is-recruiter, #is-recruiter {
+	display: none;
+}
 form {
 	display: flex;
 	flex-direction: column;

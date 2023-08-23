@@ -11,7 +11,8 @@
 	  
 	  <link rel="preconnect" href="https://fonts.googleapis.com">
 	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	  <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+	  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Orbit&family=Ubuntu:wght@300">
+	  <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Ubuntu:wght@300" rel="stylesheet">
 	  
 	  <link rel="stylesheet" href="css/main.css">
 	  <!-- material design icons -->
@@ -31,17 +32,18 @@
 	<main>
 		<div class="content-container">
 			<div class="content fade-slide-in">
-				<h1>Contact</h1>
-				<p style="margin-bottom: 50px;">christopher[dot]gardn[at]gmail[dot]com</p>
-				<!-- 
-				<form id="contact-form" action="https://professional-site-1662.twil.io/form" method="POST">
+				<h1 class="contact-form">Contact</h1>
+				<form class="contact-form" id="contact-form" action="https://submit-form.com/b79R1d88" method="POST">
 					<input type="text" placeholder="Name" name="name" id="contact_name" />
 					<input type="email" placeholder="Email" name="email" id="contact_email" />
 					<input type="text" placeholder="Organization" name="company" id="contact_company" />
+					<input type="checkbox" name="recruiter" id="is-recruiter" /><label for="is_recruiter" class="is-recruiter">Are you a recruiter?</label>
 					<textarea placeholder="Reason for contacting" name="message" id="contact_message"></textarea>
 					<button type="submit">Submit</button>
 				</form>
-				-->
+				<p class="post-submit-message">
+					Thanks for getting in touch, I'll get back to you soon!
+				</p>
 				<div class="landing-link-layout">
 					<a href="https://www.github.com/cgardn" target="_blank" class="link-anim la-6">
 						<span class="material-icons md-32">
