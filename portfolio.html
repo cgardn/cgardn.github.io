@@ -19,7 +19,13 @@
 	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	  <script type="text/javascript" src="js/main.js" defer></script>
 	  <title>Chris Gardner</title>
-	  
+	  <style>
+	  a[href="/portfolio"] {
+		text-decoration: underline;
+		text-underline-offset: 6px;
+		text-decoration-color: var(--font-color);
+	  }
+	  </style>
   </head>
   <body>
  	<header>
@@ -32,7 +38,20 @@
 	<main>
 		<div class="content-container">
 			<div class="content fade-slide-in">
-				<h1>Portfolio</h1>
+				<h1>Personal Projects</h1>
+				<div class="portfolio-item">
+					<h2><a href="https://www.squarifier.com" target="_blank">Squarifier</a></h2>
+					<p>
+					Originally created for my wife; a simple way to make vertical phone photos of products into squares for uploading to Poshmark.
+					</p>
+					<p>
+					Each batch of photos loaded into the file picker is processed on its own web worker thread with the canvas API via OffscreenCanvas, and packed into a data URL for download. Multiple photos are zipped with JSZip, slightly modified from the publicly available version for use with web workers.
+					</p>
+					<p>
+					Stack: Javascript
+					</p>
+				</div>
+				<h1>Corporate Work</h1>
 				<div class="portfolio-item">
 					<h2><a href="https://www.onesizebeauty.com" target="_blank">ONE/SIZE</a></h2>
 					<p>
