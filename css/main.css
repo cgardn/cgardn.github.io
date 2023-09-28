@@ -152,9 +152,7 @@ main {
 	animation-fill-mode: forwards;
 }
 .desktop-menu {
-	flex: 0 1 500px;
-	min-width: 200px;
-	max-width: 550px;
+	flex: 0 1 auto;
 }
 .menu a {
 	text-decoration: none;
@@ -310,7 +308,7 @@ form button {
 	}
 	.desktop-menu {
 		border: 2px solid var(--menu-border-color);
-		padding: 2rem 0 2rem 2rem;
+		padding: 2rem;
 		height: fit-content;
 	}
 }
