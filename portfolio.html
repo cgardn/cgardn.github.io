@@ -59,14 +59,14 @@
 					but over the last 2 years I've brought the site from over 1.5 MB of JS bundle down to less than 200kB compressed and minified. At this point, I've rebuilt or refactored most of what you see.
 					</p>
 					<p>
-					Most of the gains have been rewriting UI components with vanilla JS to eliminate wasteful usage of third-party libraries; one notable example was my predecessor including the entire GSAP
+					Most of the gains have been rewriting UI components with vanilla JS to eliminate wasteful usage of third-party libraries; one notable example was including the entire GSAP
 					library into the site bundle, but only using it for a slide carousel, which is a trivial task with a few lines of CSS+JS.
 					</p>
 					<p>
-					I've also led internal efforts to add file size limits to our content policy, in an attempt to keep above-the-fold images and gifs/videos to reasonable sizes for our mobile users.
+					I've also led internal efforts to add file size limits to our content policy, in an attempt to keep above-the-fold images and gifs/videos to reasonable sizes for our majority-mobile users.
 					</p>
 					<p>
-					Most recently, I rebuilt a find-your-skin-tone matching quiz with React. Previously, each of the four separate quizzes was a large liquid file replicated four times, running on some pretty
+					More recently, I rebuilt a find-your-skin-tone matching quiz with React. Previously, each of the four separate quizzes was a large liquid file replicated four times, running on some pretty
 					hairy vanilla JS. The new quiz is faster, cleaner, easier to maintain and has all the quizzes living in one unified place. <a href="https://onesizebeauty.com/pages/shade-finder" target="_blank">You can check out the quiz here.</a>
 					</p>
 					<p>
